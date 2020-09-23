@@ -60,6 +60,7 @@ class _ExperienceRowState extends State<ExperienceRow> {
           Row(
             children: [
               Container(
+                alignment: Alignment.center,
                 width: 50,
                 height: 60,
                 decoration: BoxDecoration(

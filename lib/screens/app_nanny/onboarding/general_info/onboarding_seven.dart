@@ -5,9 +5,9 @@ import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/onboarding/experience_row.dart';
 
 class NannyOnboardingSevenScreen extends StatefulWidget {
-  final MyInfo nanny;
+  final MyInfo myInfo;
   final Function nextPage;
-  NannyOnboardingSevenScreen(this.nanny, this.nextPage);
+  NannyOnboardingSevenScreen(this.myInfo, this.nextPage);
   @override
   _NannyOnboardingSevenScreenState createState() =>
       _NannyOnboardingSevenScreenState();
@@ -71,21 +71,21 @@ class _NannyOnboardingSevenScreenState
                   children: [
                     ExperienceRow(
                       textKey: 'nanny_ob_seven_baby',
-                      nanny: widget.nanny,
+                      nanny: widget.myInfo,
                       nannyKey: 'baby',
                       index: 1,
                     ),
                     ExperienceRow(
                       imagePath: 'assets/images/firebase_logo.png',
                       textKey: 'nanny_ob_seven_young',
-                      nanny: widget.nanny,
+                      nanny: widget.myInfo,
                       nannyKey: 'young',
                       index: 2,
                     ),
                     ExperienceRow(
                       imagePath: 'assets/images/node_logo.png',
                       textKey: 'nanny_ob_seven_old',
-                      nanny: widget.nanny,
+                      nanny: widget.myInfo,
                       nannyKey: 'old',
                       index: 3,
                     )
