@@ -87,7 +87,7 @@ class _DocsContainerState extends State<DocsContainer> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: _uploadDoc,
+      onTap: (){},
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(color: _getStatusColor(), width: 2),

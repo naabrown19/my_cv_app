@@ -52,7 +52,7 @@ class ProfileDetails extends StatelessWidget {
           Container(
             width: double.infinity,
             child: Text(
-              _myInfo.description ?? '',
+              AppLocalizations.of(context).translate(_myInfo.description) ?? '',
               style: TextStyle(
                   color: ThemeColors.PRIMARY_TEXT,
                   fontSize: ThemeSizes.PARAGRAPH),
@@ -160,7 +160,7 @@ class ProfileDetails extends StatelessWidget {
           Container(
             width: double.infinity,
             child: Text(
-              'WORK EXPERIENCE',
+              AppLocalizations.of(context).translate('work_experience'),
               style: TextStyle(
                   color: ThemeColors.GRAY_TEXT,
                   fontSize: ThemeSizes.PARAGRAPH,

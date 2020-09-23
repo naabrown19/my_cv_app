@@ -6,6 +6,8 @@ import 'package:my_cv_app/models/skill.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/skills_grid.dart';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 class NannyOnboardingSixScreen extends StatefulWidget {
   final MyInfo nanny;
   final Function nextPage;
@@ -27,8 +29,6 @@ class _NannyOnboardingSixScreenState extends State<NannyOnboardingSixScreen> {
   @override
   void initState() {
     super.initState();
-    _description = widget.nanny.description;
-    _startInput();
   }
 
   void _startInput() {
@@ -52,6 +52,9 @@ class _NannyOnboardingSixScreenState extends State<NannyOnboardingSixScreen> {
     super.didChangeDependencies();
     if (_isInit) {
       _skills = DUMMY_SKILLS;
+      _description =
+          AppLocalizations.of(context).translate(widget.nanny.description);
+      _startInput();
     }
     _isInit = false;
   }
@@ -92,7 +95,7 @@ class _NannyOnboardingSixScreenState extends State<NannyOnboardingSixScreen> {
                   color: Colors.white,
                   borderRadius:
                       BorderRadius.circular(ThemeSizes.BORDER_RADIUS)),
-              height: MediaQuery.of(context).size.height * 0.25,
+              height: kIsWeb ? 100 : MediaQuery.of(context).size.height * 0.25,
               child: TextField(
                 controller: _descController,
                 decoration: InputDecoration(

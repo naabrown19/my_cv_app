@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class QuestionButton extends StatelessWidget {
   final String labelKey;
@@ -15,6 +16,7 @@ class QuestionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         alignment: Alignment.center,
+        constraints: BoxConstraints(maxWidth: kIsWeb?500:1000),
         padding: EdgeInsets.all(2.0),
         width: width!=null?width:MediaQuery.of(context).size.width * 0.4,
         height: 40,

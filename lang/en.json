@@ -102,5 +102,10 @@
     "no_education":"Add your education",
     "no_reviews":"No Reviews Yet",
     "Edit Application Form":"Edit Application Form",
-    "add_contact":"Add Contact"
+    "add_contact":"Add Contact",
+    "search_address":"Search Address",
+    "work_experience":"WORK EXPERIENCE",
+    "return_to_start":"Restart",
+    "logout":"Logout",
+    "my_description":"Hi, I'm Neil, and I'm a Flutter developer."
 }

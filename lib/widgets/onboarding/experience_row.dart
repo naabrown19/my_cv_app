@@ -89,10 +89,7 @@ class _ExperienceRowState extends State<ExperienceRow> {
                   onChanged: (val) {
                     if (widget.nanny.experiences == null) {
                       map[widget.nannyKey] = val;
-                      widget.nanny.experiences = map;
-                    } else {
-                      widget.nanny.experiences[widget.nannyKey] = val;
-                    }
+                    } else {}
                     print('changed field');
                   },
                 ),

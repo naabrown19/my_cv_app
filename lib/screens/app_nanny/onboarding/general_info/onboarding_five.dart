@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_webservice/places.dart';
 import 'package:my_cv_app/models/address.dart';
 import 'package:my_cv_app/models/nanny.dart';
+import 'package:my_cv_app/providers/nanny_data.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
+import 'package:my_cv_app/services/config_reader.dart';
 import 'package:my_cv_app/widgets/common/selected_address_fields.dart';
+import 'package:provider/provider.dart';
 import '../../../../const/theme.dart';
 import 'package:google_place/google_place.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class NannyOnboardingFiveScreen extends StatefulWidget {
   final MyInfo nanny;
@@ -19,6 +24,10 @@ class NannyOnboardingFiveScreen extends StatefulWidget {
 class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
   GooglePlace googlePlace;
   List<AutocompletePrediction> predictions = [];
+  var sessionToken = 'TEST';
+  final places =
+      GoogleMapsPlaces(apiKey: ConfigReader.getGoogleApi());
+  List<Prediction> webPredictions = [];
 
   bool _addressEdited = false;
   final _addressController = TextEditingController();
@@ -27,12 +36,14 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
   int _phoneStep = 0;
   int _addressStep = 0;
   String addressSearch = '7 Plas Penrhyn, Penr';
+  Address _selectedAddress;
 
   @override
   void initState() {
     super.initState();
     googlePlace = GooglePlace('AIzaSyBb3o3TifyAVSvr3OVO9FQv-urnX4GHUSc');
     _startInput();
+    print('KIsWeb is $kIsWeb');
   }
 
   void _startInput() {
@@ -49,7 +60,9 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
         _addressController.text = addressSearch.substring(0, _addressStep);
         _addressStep += 1;
       });
-      autoCompleteSearch(_addressController.text);
+      if (_addressController.text.length > 0) {
+        autoCompleteSearch(_addressController.text);
+      }
       Future.delayed(Duration(milliseconds: 50)).then((value) {
         _startInput();
       });
@@ -61,49 +74,96 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
     }
   }
 
-  void autoCompleteSearch(String value) async {
+  Future<void> autoCompleteSearch(String value) async {
     setState(() {
       _addressEdited = true;
     });
-    var result = await googlePlace.autocomplete.get(value);
-    if (result != null && result.predictions != null && mounted) {
-      setState(() {
-        predictions = result.predictions;
-      });
+    if (kIsWeb) {
+      // var webResult = await places.autocomplete(value, sessionToken: sessionToken);
+      // if (webResult != null && webResult.predictions != null && mounted) {
+      //   setState(() {
+      //     webPredictions = webResult.predictions;
+      //   });
+      // }
+      if (_addressController.text.length > 7) {
+        webPredictions = [
+          Prediction(
+              "7 Plas Penrhyn, Penrhyn Bay, Llandudno, Conwy, UK, LL30 3EU",
+              'abc',
+              [],
+              'ChIJCVZhJc8fZUgR1czSYae30bQ',
+              'Ref',
+              [],
+              [],
+              null)
+        ];
+      }
+    } else {
+      var result = await googlePlace.autocomplete.get(value);
+      if (result != null && result.predictions != null && mounted) {
+        setState(() {
+          predictions = result.predictions;
+        });
+      }
     }
   }
 
   Future<void> _selectAddress(int index) async {
-    DetailsResponse result = await googlePlace.details.get(
-        predictions[index].placeId,
-        region: Localizations.localeOf(context).countryCode,
-        language: Localizations.localeOf(context).languageCode);
+    DetailsResponse result;
+    PlacesDetailsResponse webResult;
+    if (kIsWeb) {
+      // webResult = await places.getDetailsByPlaceId(
+      //     webPredictions[index].placeId,
+      //     language: Localizations.localeOf(context).languageCode,
+      //     region: Localizations.localeOf(context).countryCode);
+    } else {
+      print('PLACE ID FOR PBAY IS ${predictions[index].placeId}');
+      result = await googlePlace.details.get(predictions[index].placeId,
+          region: Localizations.localeOf(context).countryCode,
+          language: Localizations.localeOf(context).languageCode);
+    }
 
     _addressController.text = '';
-
-    widget.nanny.address = Address(
-      placeId: predictions[index].placeId,
-      formattedAddress: result.result.formattedAddress,
-      number: result.result.addressComponents[0].shortName,
-      street: result.result.addressComponents[1].shortName,
-      region: result.result.addressComponents[2].shortName,
-      city: result.result.addressComponents[3].longName,
-      county: result.result.addressComponents[4].longName,
-      country: result.result.addressComponents[5].longName,
-      postcode: result
-          .result
-          .addressComponents[result.result.addressComponents.length - 1]
-          .shortName,
+    // if (kIsWeb) {
+    print('selected address is web');
+    _selectedAddress = Address(
+      placeId: 'ChIJCVZhJc8fZUgR1czSYae30bQ',
+      formattedAddress:
+          "7 Plas Penrhyn, Penrhyn Bay, Llandudno, Conwy, UK, LL30 3EU",
+      number: '7',
+      street: 'Plas Penrhyn',
+      region: 'Penrhyn Bay',
+      city: 'Llandudno',
+      county: 'Conwy',
+      country: 'UK',
+      postcode: 'LL30 3EU',
     );
+    // } else {
+    //   _selectedAddress = Address(
+    //     placeId: predictions[index].placeId,
+    //     formattedAddress: result.result.formattedAddress,
+    //     number: result.result.addressComponents[0].shortName,
+    //     street: result.result.addressComponents[1].shortName,
+    //     region: result.result.addressComponents[2].shortName,
+    //     city: result.result.addressComponents[3].longName,
+    //     county: result.result.addressComponents[4].longName,
+    //     country: result.result.addressComponents[5].longName,
+    //     postcode: result
+    //         .result
+    //         .addressComponents[result.result.addressComponents.length - 1]
+    //         .shortName,
+    //   );
+    // }
 
-    result.result.addressComponents.forEach((element) {
-      print(element.shortName);
-      print(element.longName);
-    });
+    // result.result.addressComponents.forEach((element) {
+    //   print(element.shortName);
+    //   print(element.longName);
+    // });
 
-    debugPrint(predictions[index].placeId);
+    // debugPrint(predictions[index].placeId);
     FocusScope.of(context).unfocus();
     predictions.clear();
+    webPredictions.clear();
     setState(() {
       _addressEdited = false;
     });
@@ -170,7 +230,8 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
               TextFormField(
                 controller: _addressController,
                 decoration: InputDecoration(
-                  labelText: "Search Address",
+                  labelText:
+                      AppLocalizations.of(context).translate('search_address'),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.blue,
@@ -187,10 +248,15 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
                 onChanged: (value) {
                   if (value.isNotEmpty) {
                     autoCompleteSearch(value);
-                  } else {
+
                     if (predictions.length > 0 && mounted) {
                       setState(() {
                         predictions = [];
+                      });
+                    }
+                    if (webPredictions.length > 0 && mounted) {
+                      setState(() {
+                        webPredictions = [];
                       });
                     }
                   }
@@ -203,7 +269,8 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
                   ? Container(
                       height: 200,
                       child: ListView.builder(
-                        itemCount: predictions.length,
+                        itemCount:
+                            kIsWeb ? webPredictions.length : predictions.length,
                         itemBuilder: (context, index) {
                           return ListTile(
                             leading: CircleAvatar(
@@ -212,13 +279,15 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
                                 color: Colors.white,
                               ),
                             ),
-                            title: Text(predictions[index].description),
+                            title: Text(kIsWeb
+                                ? webPredictions[index].description
+                                : predictions[index].description),
                             onTap: () => _selectAddress(index),
                           );
                         },
                       ),
                     )
-                  : SelectedAddressField(widget.nanny.address)
+                  : SelectedAddressField(_selectedAddress)
             ],
           ),
         ),

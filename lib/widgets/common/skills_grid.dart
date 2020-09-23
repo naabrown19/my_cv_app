@@ -71,7 +71,7 @@ class _SkillsGridState extends State<SkillsGrid> {
       children: widget.editMode
           ? widget.allSkills
               .map((e) => InkWell(
-                    onTap: () => selectSkill(e),
+                    onTap: () {},
                     child: QuestionButton(
                       labelKey: e.skill,
                       isSelected: select == null

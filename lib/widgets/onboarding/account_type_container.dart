@@ -14,10 +14,10 @@ class AccountTypeContainer extends StatelessWidget {
       alignment: Alignment.center,
       decoration:
           BoxDecoration(color: color, borderRadius: BorderRadius.circular(8.0)),
-      height: kIsWeb ? MediaQuery.of(context).size.height*0.5 : 150,
+      height: kIsWeb ? MediaQuery.of(context).size.height*0.3 : 150,
       margin: EdgeInsets.all(5.0),
       padding: EdgeInsets.all(15.0),
-      width: kIsWeb ? MediaQuery.of(context).size.width*0.2 : MediaQuery.of(context).size.width * 0.25,
+      width: kIsWeb ? MediaQuery.of(context).size.height*0.2 : MediaQuery.of(context).size.width * 0.25,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

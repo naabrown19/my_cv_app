@@ -13,13 +13,21 @@ class AppLocalizations {
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+      AppLocalizationsDelegate();
 
   Map<String, String> _localizedStrings;
 
-  Future<bool> load() async {
-    String jsonString =
-        await rootBundle.loadString('lang/${locale.languageCode}.json');
+  Future<bool> load({String lang}) async {
+    String jsonString;
+    if (lang != null) {
+      print('${lang.toLowerCase()} we are using it?');
+      jsonString =
+          await rootBundle.loadString('lang/${lang.toLowerCase()}.json');
+    } else {
+      jsonString =
+          await rootBundle.loadString('lang/${locale.languageCode}.json');
+    }
+
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _localizedStrings = jsonMap.map((key, value) {
@@ -34,9 +42,10 @@ class AppLocalizations {
   }
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
-  const _AppLocalizationsDelegate();
+class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+  final Locale overriddenLocale;
+
+  const AppLocalizationsDelegate({this.overriddenLocale});
 
   @override
   bool isSupported(Locale locale) {
@@ -45,7 +54,12 @@ class _AppLocalizationsDelegate
 
   @override
   Future<AppLocalizations> load(Locale locale) async {
-    AppLocalizations localizations = AppLocalizations(locale);
+    AppLocalizations localizations;
+    if (overriddenLocale != null) {
+      localizations = AppLocalizations(overriddenLocale);
+    } else {
+      localizations = AppLocalizations(locale);
+    }
     await localizations.load();
     return localizations;
   }

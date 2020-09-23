@@ -20,8 +20,8 @@
     "has_account":"¿Ya tienes una cuenta? Iniciar sesión",
     "login_terms":"Al crear tu cuenta estás aceptando nuestros Términos y Condiciones",
     "select_account_type":"Selecciona el tipo de cuenta que deseas crear",
-    "nanny_account_type": "Soy una niñera buscando conectar con familias para cuidar a los pequeños",
-    "family_account_type":"Soy parte de una familia y busco una niñera para cuidar a mis hijos",
+    "full_account_type":"Soy un desarrollador de pila completa que busca crear aplicaciones multiplataforma con Flutter, Firebase y Node.JS",
+    "front_account_type":"Soy un desarrollador front-end que crea aplicaciones con un hermoso diseño de interfaz de usuario y ux",
     "nanny_ob_four_title":"Háblanos de ti",
     "nanny_ob_four_subtitle":"Datos Personales",
     "name":"Nombre",
@@ -107,5 +107,10 @@
     "no_education":"Agrega tu educación",
     "no_reviews":"Aún no hay comentarios",
     "Edit Application Form":"Editar formulario de solicitud",
-    "add_contact":"Agregar Contacto"
+    "add_contact":"Agregar Contacto",
+    "search_address":"Buscar dirección",
+    "work_experience":"EXPERIENCIA PROFESIONAL",
+    "return_to_start":"Reiniciar",
+    "logout":"Cerrar sesión",
+    "my_description":"Hola, soy Neil y soy desarrollador de Flutter."
 }

@@ -57,6 +57,8 @@ flutter:
     - lang/en.json
     - lang/es.json
 
+    - config/
+
   fonts:
     - family: Muli
       fonts:

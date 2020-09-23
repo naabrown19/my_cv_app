@@ -1,13 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:my_cv_app/models/education.dart';
 import 'package:my_cv_app/models/nanny.dart';
+import 'package:my_cv_app/models/review.dart';
 import 'package:my_cv_app/models/skill.dart';
 import 'package:my_cv_app/models/work_experience.dart';
 
 import '../const/dummy_data.dart';
 
 class MyInfoProvider extends ChangeNotifier {
-  
   MyInfo _myInfo = MyInfo(
       phoneIso: '+52',
       phoneNo: '4445041207',
@@ -15,7 +16,7 @@ class MyInfoProvider extends ChangeNotifier {
       averageReviewRating: 5,
       serviceCount: 2,
       approved: true,
-      description: 'Hi, I\'m Neil, and I\'m a Flutter developer.',
+      description: 'my_description',
       documents: dummyDocs,
       education: [
         Education(
@@ -93,7 +94,26 @@ class MyInfoProvider extends ChangeNotifier {
       firstName: 'Neil',
       nativeLanguageId: '1ae',
       otherLanguages: {'2ae': 'intermediate'},
-      reviews: DUMMY_REVIEWS,
+      reviews: [
+        Review(
+            id: '2',
+            comments:
+                'Neil created an app that works on iOS, Android, and now Web! with a well-structured Firedbase database that is easy to understand.',
+            familyId: 'test',
+            nannyId: 'test',
+            score: 5,
+            serviceId: 'test',
+            reviewType: 'nanny'),
+            Review(
+            id: '2',
+            comments: 'Neil did a great job at creating our cross-platform application.',
+            familyId: 'test',
+            nannyId: 'test',
+            score: 5,
+            serviceId: 'test',
+            reviewType: 'nanny'),
+        
+      ],
       workExperience: [
         WorkExperience(
             jobTitle: 'Network Management Associate',
@@ -102,7 +122,7 @@ class MyInfoProvider extends ChangeNotifier {
             endDate: DateTime(2020, 08, 01),
             responsibilities: []),
         WorkExperience(
-            jobTitle: 'Data Processing Associate',
+            jobTitle: 'Data Management Associate',
             companyName: 'Home Depot Canada',
             startDate: DateTime(2018, 02, 01),
             endDate: DateTime(2018, 06, 01),
@@ -114,8 +134,19 @@ class MyInfoProvider extends ChangeNotifier {
             endDate: DateTime(2015, 07, 01),
             responsibilities: []),
       ]);
+  
+  String _currentLang;
 
   MyInfo get nanny {
     return _myInfo;
+  }
+
+  String get currentLang {
+    return _currentLang ?? 'EN';
+  }
+
+  void setCurrentLang(String lang){
+    _currentLang = lang;
+    notifyListeners();
   }
 }

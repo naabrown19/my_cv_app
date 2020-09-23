@@ -6,18 +6,20 @@ import 'package:my_cv_app/providers/nanny_data.dart';
 import 'package:my_cv_app/screens/login/initial_onboarding/initial_onboarding_page_view.dart';
 import 'package:my_cv_app/screens/login/login_screen.dart';
 import 'package:my_cv_app/screens/login/select_account_screen.dart';
+import 'package:my_cv_app/services/config_reader.dart';
 import 'package:provider/provider.dart';
 
 import 'services/app_localizations.dart';
 import 'const/theme.dart';
 
-void main() {
+Future<void> main() async {
   setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  await ConfigReader.initialize();
   runApp(MyApp());
 }
 
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Mamá Gallina Sitters',
+        title: 'About Neil',
         theme: ThemeData(
           backgroundColor: ThemeColors.BACKGROUND,
           primaryColor: ThemeColors.PRIMARY,

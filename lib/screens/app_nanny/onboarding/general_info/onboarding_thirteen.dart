@@ -21,17 +21,34 @@ class _NannyOnboardingThirteenScreenState
       widget.nextPage();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.center,
       height: double.infinity,
       width: double.infinity,
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              height: 300,
-              child: AnimatedFlutterLogo(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/flutter_logo.png',
+                  height: 150,
+                ),
+                Image.asset(
+                  'assets/images/firebase_logo.png',
+                  height: 150,
+                )
+              ],
+            ),
+            Image.asset(
+              'assets/images/node_logo.png',
+              height: 125,
             ),
             const SizedBox(height: 30),
             OnboardingTitle('nanny_ob_thirteen_title'),

@@ -12,12 +12,15 @@ class InitialOnboarding2 extends StatelessWidget {
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: Container(
                 alignment: Alignment.center,
+                width: double.infinity,
                 margin: EdgeInsets.all(ThemeSizes.MARGIN),
-                child: AnimatedFlutterLogo()),
+                child:
+                    Image.asset('assets/images/flutter_logo.png', height: 250)),
           ),
           OnboardingTitle('login_ob_2'),
         ],

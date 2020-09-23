@@ -11,6 +11,7 @@ import 'package:my_cv_app/screens/app_nanny/onboarding/general_info/onboarding_t
 import 'package:my_cv_app/screens/app_nanny/onboarding/general_info/onboarding_twelve.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/continue_button.dart';
+import 'package:my_cv_app/widgets/common/language_selector.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '../../../../const/theme.dart';
@@ -30,11 +31,13 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
   bool _isLoading = false;
   MyInfo _myInfo;
   bool _isInit = true;
+  String _lang;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (_isInit) {
+      _lang = Provider.of<MyInfoProvider>(context).currentLang;
       _myInfo = Provider.of<MyInfoProvider>(context, listen: false).nanny;
       //get lanuages, skills, special cares, questions
       String _locale = Localizations.localeOf(context).languageCode;
@@ -44,13 +47,6 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
   }
 
   Future<void> _nextPage() async {
-    switch (_currentPage) {
-      case 4:
-        Future.delayed(Duration(seconds: 3)).then((value) {
-          _nextPage();
-        });
-    }
-
     _pageController.nextPage(
       duration: Duration(milliseconds: 500),
       curve: Curves.ease,
@@ -75,89 +71,99 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: SingleChildScrollView(
-            child: Container(
-              constraints: BoxConstraints(maxWidth: kIsWeb ? 600 : 1000),
-              height: MediaQuery.of(context).size.height - 40,
-              margin: EdgeInsets.symmetric(
-                  horizontal: ThemeSizes.MARGIN, vertical: 8.0),
-              child: Column(
-                children: [
-                  LinearPercentIndicator(
-                    progressColor: ThemeColors.PRIMARY_DARK,
-                    backgroundColor: ThemeColors.PRIMARY.withOpacity(0.2),
-                    percent: _currentPage / _numPages,
-                    width: MediaQuery.of(context).size.width - 32,
-                    lineHeight: 10,
-                    animateFromLastPercent: true,
-                    animation: true,
-                  ),
-                  Expanded(
-                    child: Container(
-                      width: double.infinity,
-                      margin: EdgeInsets.symmetric(vertical: ThemeSizes.MARGIN),
-                      child: PageView(
-                        controller: _pageController,
-                        physics: _currentPage == _numPages
-                            ? NeverScrollableScrollPhysics()
-                            : ScrollPhysics(),
-                        onPageChanged: (int page) {
-                          setState(() {
-                            _currentPage = page;
-                          });
-                        },
+            child: Center(
+              child: Container(
+                constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
+                height: MediaQuery.of(context).size.height - 40,
+                margin: EdgeInsets.symmetric(
+                    horizontal: ThemeSizes.MARGIN, vertical: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    LinearPercentIndicator(
+                      progressColor: ThemeColors.PRIMARY_DARK,
+                      backgroundColor: ThemeColors.PRIMARY.withOpacity(0.2),
+                      percent: _currentPage / _numPages,
+                      width:
+                          kIsWeb ? 500 : MediaQuery.of(context).size.width - 32,
+                      lineHeight: 10,
+                      animateFromLastPercent: true,
+                      animation: true,
+                    ),
+                    Expanded(
+                      child: Container(
+                        width: double.infinity,
+                        margin:
+                            EdgeInsets.symmetric(vertical: ThemeSizes.MARGIN),
+                        child: Stack(
+                          children: [
+                            PageView(
+                              controller: _pageController,
+                              physics: _currentPage == _numPages
+                                  ? NeverScrollableScrollPhysics()
+                                  : ScrollPhysics(),
+                              onPageChanged: (int page) {
+                                setState(() {
+                                  _currentPage = page;
+                                });
+                              },
+                              children: [
+                                NannyOnboardingFourScreen(_myInfo, _nextPage),
+                                NannyOnboardingFiveScreen(_myInfo, _nextPage),
+                                NannyOnboardingSixScreen(_myInfo, _nextPage),
+                                NannyOnboardingSevenScreen(_myInfo, _nextPage),
+                                NannyOnboardingEightScreen(_myInfo, _nextPage),
+                                NannyOnboardingTwelveScreen(_myInfo, _nextPage),
+                                NannyOnboardingThirteenScreen(_continue)
+                              ],
+                            ),
+                            LanguageSelector(),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: FractionalOffset.bottomCenter,
+                      child: Column(
                         children: [
-                          NannyOnboardingFourScreen(_myInfo, _nextPage),
-                          NannyOnboardingFiveScreen(_myInfo, _nextPage),
-                          NannyOnboardingSixScreen(_myInfo, _nextPage),
-                          NannyOnboardingSevenScreen(_myInfo, _nextPage),
-                          NannyOnboardingEightScreen(_myInfo, _nextPage),
-                          NannyOnboardingTwelveScreen(_myInfo,_nextPage),
-                          NannyOnboardingThirteenScreen(_continue)
+                          ContinueButton(
+                              text: _currentPage == _numPages
+                                  ? 'finish'
+                                  : 'continue',
+                              onPressed: _currentPage == _numPages
+                                  ? _continue
+                                  : _nextPage,
+                              isLoading: _isLoading),
+                          InkWell(
+                            onTap: () {
+                              if (_currentPage != 0 ||
+                                  _currentPage == _numPages) {
+                                _pageController.previousPage(
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.ease);
+                              }
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              padding:
+                                  const EdgeInsets.only(top: 8.0, bottom: 16.0),
+                              child: Text(
+                                _currentPage == 0 || _currentPage == _numPages
+                                    ? ''
+                                    : AppLocalizations.of(context)
+                                        .translate('back'),
+                                style: TextStyle(
+                                    color: ThemeColors.GRAY_TEXT,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: FractionalOffset.bottomCenter,
-                    child: Column(
-                      children: [
-                        ContinueButton(
-                            text: _currentPage == _numPages
-                                ? 'finish'
-                                : 'continue',
-                            onPressed: _currentPage == _numPages
-                                ? _continue
-                                : _nextPage,
-                            isLoading: _isLoading),
-                        InkWell(
-                          onTap: () {
-                            if (_currentPage != 0 ||
-                                _currentPage == _numPages) {
-                              _pageController.previousPage(
-                                  duration: Duration(milliseconds: 500),
-                                  curve: Curves.ease);
-                            }
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            padding:
-                                const EdgeInsets.only(top: 8.0, bottom: 16.0),
-                            child: Text(
-                              _currentPage == 0 || _currentPage == _numPages
-                                  ? ''
-                                  : AppLocalizations.of(context)
-                                      .translate('back'),
-                              style: TextStyle(
-                                  color: ThemeColors.GRAY_TEXT,
-                                  fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

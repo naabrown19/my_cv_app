@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import '../../const/theme.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ContinueButton extends StatelessWidget {
   final String text;
@@ -30,6 +31,7 @@ class ContinueButton extends StatelessWidget {
       onTap: isLoading ? () {} : onPressed,
       borderRadius: BorderRadius.circular(20),
       child: Container(
+        constraints: BoxConstraints(maxWidth:kIsWeb?468:1000),
         margin: EdgeInsets.symmetric(vertical: ThemeSizes.MARGIN / 2),
         padding: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(

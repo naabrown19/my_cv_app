@@ -13,16 +13,19 @@ class ReviewList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MyInfo _myInfo;
-    if (isNanny) {
-      _myInfo = Provider.of<MyInfoProvider>(context).nanny;
-    }
+
+    _myInfo = Provider.of<MyInfoProvider>(context, listen: false).nanny;
+
     return _myInfo.reviews != null && _myInfo.reviews.length > 0
-        ? ListView.builder(
-            shrinkWrap: true,
-            itemCount: _myInfo.reviews.length,
-            itemBuilder: (context, index) => ReviewListItem(
-                _myInfo.reviews[index],
-                index == _myInfo.reviews.length - 1 ? false : true),
+        ? Container(
+            width: double.infinity,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: _myInfo.reviews.length,
+              itemBuilder: (context, index) => ReviewListItem(
+                  _myInfo.reviews[index],
+                  index == _myInfo.reviews.length - 1 ? false : true),
+            ),
           )
         : Text(
             AppLocalizations.of(context).translate('no_reviews'),

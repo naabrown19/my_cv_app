@@ -3,6 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/models/review.dart';
 import 'package:my_cv_app/widgets/common/profile_photo.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ReviewListItem extends StatelessWidget {
   final Review review;
@@ -19,18 +20,18 @@ class ReviewListItem extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              ProfilePhoto(),
+              CircleAvatar(radius: 20, child: FlutterLogo(),),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Joe Bloggs',
+                    review.id=='1'?'Joe Bloggs':'Rod Knee',
                     style: TextStyle(
                         color: ThemeColors.DARK_GRAY,
                         fontSize: ThemeSizes.SUBTITLE,
                         fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
+                    textAlign: TextAlign.start,
                   ),
                   Row(
                     children: [

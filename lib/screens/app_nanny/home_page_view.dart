@@ -27,15 +27,17 @@ class _NannyHomePageViewState extends State<NannyHomePageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ThemeColors.BACKGROUND,
-      body: Container(
-        constraints: BoxConstraints(maxWidth: kIsWeb ? 600 : 1000),
-        child: PageView(
-                controller: _pageController,
-                onPageChanged: (page) {
-                  selectPage(page);
-                },
-                children: _pages,
-              ),
+      body: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
+          child: PageView(
+                  controller: _pageController,
+                  onPageChanged: (page) {
+                    selectPage(page);
+                  },
+                  children: _pages,
+                ),
+        ),
       ),
       bottomNavigationBar:
           BottomNavigationNanny(selectPage, _selectedPageIndex),

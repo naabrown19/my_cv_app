@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class AnimatedFlutterLogo extends StatefulWidget {
   @override
@@ -14,18 +15,23 @@ class _AnimatedFlutterLogoState extends State<AnimatedFlutterLogo>
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 2));
+        AnimationController(duration: Duration(seconds: 2));
     _animation = _animationController.drive(Tween(begin: -1, end: 1));
     _animationController.forward();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SizeTransition(
-      child: Container(height: 250, width: 300, child: FlutterLogo(),),
-      sizeFactor: _animation,
-      axis: Axis.vertical,
-     
+    return Center(
+      child: SizeTransition(
+        child: Container(
+          height: 250,
+          width: 300,
+          child: FlutterLogo(),
+        ),
+        sizeFactor: _animation,
+        axis: Axis.vertical,
+      ),
     );
   }
 }

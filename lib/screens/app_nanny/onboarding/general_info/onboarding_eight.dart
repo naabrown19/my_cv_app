@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/dummy_data.dart';
 import 'package:my_cv_app/const/theme.dart';
@@ -164,8 +165,7 @@ class _NannyOnboardingEightScreenState
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             InkWell(
-                              onTap: () => _selectLanguageLevel(
-                                  _filteredLanguages[index].id, 'basic'),
+                              onTap: (){},
                               child: QuestionButton(
                                 labelKey: 'basic',
                                 isSelected: widget.nanny.otherLanguages == null
@@ -179,13 +179,12 @@ class _NannyOnboardingEightScreenState
                                             ? true
                                             : false
                                         : false,
-                                width: MediaQuery.of(context).size.width * 0.28,
+                                width: kIsWeb?150: MediaQuery.of(context).size.width * 0.28,
                                 fontSize: 14,
                               ),
                             ),
                             InkWell(
-                              onTap: () => _selectLanguageLevel(
-                                  _filteredLanguages[index].id, 'intermediate'),
+                              onTap: () {},
                               child: QuestionButton(
                                 labelKey: 'intermediate',
                                 isSelected: widget.nanny.otherLanguages == null
@@ -199,16 +198,14 @@ class _NannyOnboardingEightScreenState
                                             ? true
                                             : false
                                         : false,
-                                width: MediaQuery.of(context).size.width * 0.28,
+                                width: kIsWeb?150:MediaQuery.of(context).size.width * 0.28,
                                 fontSize: 14,
                               ),
                             ),
                             InkWell(
-                              onTap: () => _selectLanguageLevel(
-                                  _filteredLanguages[index].id, 'advanced'),
+                              onTap: () {},
                               child: QuestionButton(
-                                onPressed: () => _selectLanguageLevel(
-                                    _filteredLanguages[index].id, 'advanced'),
+                                onPressed: () {},
                                 labelKey: 'advanced',
                                 isSelected: widget.nanny.otherLanguages == null
                                     ? false
@@ -221,7 +218,7 @@ class _NannyOnboardingEightScreenState
                                             ? true
                                             : false
                                         : false,
-                                width: MediaQuery.of(context).size.width * 0.28,
+                                width: kIsWeb?150:MediaQuery.of(context).size.width * 0.28,
                                 fontSize: 14,
                               ),
                             ),
