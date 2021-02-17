@@ -10,8 +10,8 @@ import '../const/dummy_data.dart';
 
 class MyInfoProvider extends ChangeNotifier {
   MyInfo _myInfo = MyInfo(
-      phoneIso: '+52',
-      phoneNo: '4445041207',
+      phoneIso: '+44',
+      phoneNo: '7984885571',
       id: 'test',
       averageReviewRating: 5,
       serviceCount: 2,
@@ -89,7 +89,7 @@ class MyInfoProvider extends ChangeNotifier {
             skillEs: 'Arte y Manualidades')
       ],
       email: 'naabrown19@gmail.com',
-      experiences: {'baby': '1', 'young': '1', 'old': '1'},
+      experiences: {'baby': '2', 'young': '2', 'old': '2'},
       lastName: 'Brown',
       firstName: 'Neil',
       nativeLanguageId: '1ae',
@@ -115,6 +115,18 @@ class MyInfoProvider extends ChangeNotifier {
         
       ],
       workExperience: [
+        WorkExperience(
+            jobTitle: 'Technical Analyst',
+            companyName: 'Southampton City Council',
+            startDate: DateTime(2020, 10, 01),
+            endDate: DateTime.now(),
+            responsibilities: []),
+        WorkExperience(
+            jobTitle: 'Co-Founder',
+            companyName: 'Mama Gallina Sitters',
+            startDate: DateTime(2019, 10, 01),
+            endDate: DateTime.now(),
+            responsibilities: []),
         WorkExperience(
             jobTitle: 'Network Management Associate',
             companyName: 'Bell Canada',

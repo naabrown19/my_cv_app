@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/models/nanny.dart';
 import 'package:my_cv_app/models/skill.dart';
@@ -64,7 +65,7 @@ class _SkillsGridState extends State<SkillsGrid> {
       physics:
           widget.editMode ? ScrollPhysics() : NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      childAspectRatio: 4 / 1,
+      childAspectRatio: kIsWeb ? 6/1 : 4 / 1,
       mainAxisSpacing: 10,
       crossAxisSpacing: 10,
       crossAxisCount: 2,
