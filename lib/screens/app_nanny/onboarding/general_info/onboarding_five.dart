@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:my_cv_app/models/address.dart';
 import 'package:my_cv_app/models/nanny.dart';
-import 'package:my_cv_app/providers/nanny_data.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/services/config_reader.dart';
 import 'package:my_cv_app/widgets/common/selected_address_fields.dart';
-import 'package:provider/provider.dart';
 import '../../../../const/theme.dart';
 import 'package:google_place/google_place.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -38,9 +36,12 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
   String addressSearch = '7 Plas Penrhyn, Penr';
   Address _selectedAddress;
 
+  ScrollController _scrollController;
+
   @override
   void initState() {
     super.initState();
+    _scrollController= ScrollController();
     googlePlace = GooglePlace('AIzaSyBb3o3TifyAVSvr3OVO9FQv-urnX4GHUSc');
     _startInput();
     print('KIsWeb is $kIsWeb');
@@ -138,6 +139,7 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
       country: 'UK',
       postcode: 'LL30 3EU',
     );
+
     // } else {
     //   _selectedAddress = Address(
     //     placeId: predictions[index].placeId,
@@ -167,11 +169,13 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
     setState(() {
       _addressEdited = false;
     });
+    await _scrollController.animateTo(200, duration: const Duration(milliseconds: 300), curve: Curves.easeIn,);
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: _scrollController,
       child: Container(
         width: double.infinity,
         child: GestureDetector(

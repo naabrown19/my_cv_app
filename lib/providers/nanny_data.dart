@@ -115,11 +115,17 @@ class MyInfoProvider extends ChangeNotifier {
         
       ],
       workExperience: [
+         WorkExperience(
+            jobTitle: 'Software Developer',
+            companyName: 'Cufflink.io',
+            startDate: DateTime(2020, 04, 01),
+            endDate: DateTime.now(),
+            responsibilities: []),
         WorkExperience(
             jobTitle: 'Technical Analyst',
             companyName: 'Southampton City Council',
             startDate: DateTime(2020, 10, 01),
-            endDate: DateTime.now(),
+            endDate: DateTime(2021, 03, 31),
             responsibilities: []),
         WorkExperience(
             jobTitle: 'Co-Founder',

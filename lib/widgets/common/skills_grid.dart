@@ -21,12 +21,15 @@ class _SkillsGridState extends State<SkillsGrid> {
   List<String> select = [];
   int _skillStep = 0;
 
+  ScrollController _scrollController;
+
   @override
   void initState() {
     super.initState();
+      _scrollController = ScrollController();
     if(widget.start) {
       _startInput();
-    };
+    }
   }
 
   void _startInput() {
@@ -36,6 +39,9 @@ class _SkillsGridState extends State<SkillsGrid> {
       setState(() {
       });
       _skillStep += 1;
+      if((_skillStep % 6) == 0 && _skillStep!=0){
+        _scrollController.animateTo(300, duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+      }
       Future.delayed(Duration(milliseconds: 300)).then((value) {
         _startInput();
       });
@@ -62,6 +68,7 @@ class _SkillsGridState extends State<SkillsGrid> {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
+      controller: _scrollController,
       physics:
           widget.editMode ? ScrollPhysics() : NeverScrollableScrollPhysics(),
       shrinkWrap: true,

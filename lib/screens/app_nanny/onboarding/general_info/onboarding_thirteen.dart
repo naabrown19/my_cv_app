@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
-import 'package:my_cv_app/widgets/onboarding/flutter_logo_animation.dart';
 import 'package:my_cv_app/widgets/onboarding/onboarding_title.dart';
 
 class NannyOnboardingThirteenScreen extends StatefulWidget {

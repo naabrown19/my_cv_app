@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/models/review.dart';
-import 'package:my_cv_app/widgets/common/profile_photo.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ReviewListItem extends StatelessWidget {
   final Review review;

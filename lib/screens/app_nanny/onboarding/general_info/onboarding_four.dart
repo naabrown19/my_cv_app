@@ -35,9 +35,12 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
   // int _monthStep = 0;
   // int _yearStep = 0;
 
+  ScrollController _scrollController;
+
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
     Future.delayed(Duration(milliseconds: 500)).then((value) {
       _startInput();
     });
@@ -75,6 +78,7 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
         _startInput();
       });
     } else if (_dayController.text.length != 2) {
+      _scrollController.animateTo(200, duration: Duration(milliseconds: 200), curve: Curves.easeIn);
       setState(() {
         _dayController.text = '19';
       });
@@ -120,6 +124,7 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: _scrollController,
       child: Container(
         width: double.infinity,
         child: GestureDetector(

@@ -72,17 +72,6 @@ class _DocsContainerState extends State<DocsContainer> {
     return widget;
   }
 
-  Future<void> _uploadDoc() async {
-    setState(() {
-      _isLoading = true;
-    });
-    await Future.delayed(Duration(seconds: 2));
-    widget.doc.status = 'submitted';
-    widget.doc.dateSubmitted = DateTime.now();
-    setState(() {
-      _isLoading = false;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

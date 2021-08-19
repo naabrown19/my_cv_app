@@ -106,7 +106,7 @@ class _MainSectionPageViewState extends State<MainSectionPageView> {
           ),
         ),
         Container(
-          height: kIsWeb ? 1100 : _selectedPageIndex == 0 ? 1005 : 200,
+          height: kIsWeb ? 1250 : _selectedPageIndex == 0 ? 1100 : 200,
           margin: EdgeInsets.only(bottom: 8.0),
           decoration: BoxDecoration(
               color: Colors.white,

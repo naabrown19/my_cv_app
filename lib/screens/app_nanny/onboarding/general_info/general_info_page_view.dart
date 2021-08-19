@@ -32,6 +32,13 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
   MyInfo _myInfo;
   bool _isInit = true;
   String _lang;
+  ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
 
   @override
   void didChangeDependencies() {
@@ -71,6 +78,7 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: SingleChildScrollView(
+            controller: _scrollController,
             child: Center(
               child: Container(
                 constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
