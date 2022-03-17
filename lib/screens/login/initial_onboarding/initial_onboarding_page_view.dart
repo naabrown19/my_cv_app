@@ -31,7 +31,7 @@ class _InitialOnboardingPageViewState extends State<InitialOnboardingPageView> {
       Provider.of<MyInfoProvider>(context, listen: false)
           .setCurrentLang(Localizations.localeOf(context).languageCode);
     });
-    Future.delayed(Duration(seconds: _currentPage == 0 ? 3 : 4)).then((value) {
+    Future.delayed(Duration(seconds: 2)).then((value) {
       _nextPage();
     });
   }
@@ -44,7 +44,7 @@ class _InitialOnboardingPageViewState extends State<InitialOnboardingPageView> {
         duration: Duration(milliseconds: 500),
         curve: Curves.ease,
       );
-      Future.delayed(Duration(seconds: 4)).then((value) {
+      Future.delayed(Duration(seconds: 2)).then((value) {
         _nextPage();
       });
     }
