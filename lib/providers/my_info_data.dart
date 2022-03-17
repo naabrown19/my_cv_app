@@ -10,8 +10,8 @@ import '../const/dummy_data.dart';
 
 class MyInfoProvider extends ChangeNotifier {
   MyInfo _myInfo = MyInfo(
-      phoneIso: '+44',
-      phoneNo: '7984885571',
+      phoneIso: '+52',
+      phoneNo: '5572032336',
       id: 'test',
       averageReviewRating: 5,
       serviceCount: 2,

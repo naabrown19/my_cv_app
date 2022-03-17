@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 class BottomNavigationNanny extends StatelessWidget {
   final Function selectPage;
@@ -10,7 +10,7 @@ class BottomNavigationNanny extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
+      constraints: BoxConstraints(maxWidth: kIsWeb ? 600 : 1000),
       width: kIsWeb ? 500 : MediaQuery.of(context).size.width,
       child: BottomNavigationBar(
         backgroundColor: Colors.white,

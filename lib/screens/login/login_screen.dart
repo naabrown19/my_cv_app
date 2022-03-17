@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/providers/my_info_data.dart';
@@ -8,7 +9,6 @@ import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/language_selector.dart';
 import 'package:my_cv_app/widgets/common/login_button.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: SafeArea(
             child: Center(
               child: Container(
-                constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
+                constraints: BoxConstraints(maxWidth: kIsWeb ? 600 : 1000),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   image: DecorationImage(

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/providers/my_info_data.dart';
@@ -9,7 +10,6 @@ import 'package:my_cv_app/widgets/common/continue_button.dart';
 import 'package:my_cv_app/widgets/common/indicator.dart';
 import 'package:my_cv_app/widgets/common/language_selector.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:provider/provider.dart';
 
 class InitialOnboardingPageView extends StatefulWidget {
@@ -78,7 +78,7 @@ class _InitialOnboardingPageViewState extends State<InitialOnboardingPageView> {
           margin: EdgeInsets.all(ThemeSizes.MARGIN),
           height: double.infinity,
           width: double.infinity,
-          constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
+          constraints: BoxConstraints(maxWidth: kIsWeb ? 600 : 1000),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,

@@ -31,7 +31,7 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
 
   int _phoneStep = 0;
   int _addressStep = 0;
-  String addressSearch = '7 Plas Penrhyn, Penr';
+  String addressSearch = '70 Baldwin St, Toron';
   Address _selectedAddress;
 
   ScrollController _scrollController;
@@ -40,7 +40,6 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
   void initState() {
     super.initState();
     _scrollController = ScrollController();
-    googlePlace = GooglePlace('AIzaSyBb3o3TifyAVSvr3OVO9FQv-urnX4GHUSc');
     _startInput();
     print('KIsWeb is $kIsWeb');
   }
@@ -86,15 +85,8 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
       // }
       if (_addressController.text.length > 7) {
         webPredictions = [
-          Prediction(
-              "7 Plas Penrhyn, Penrhyn Bay, Llandudno, Conwy, UK, LL30 3EU",
-              'abc',
-              [],
-              'ChIJCVZhJc8fZUgR1czSYae30bQ',
-              'Ref',
-              [],
-              [],
-              null)
+          Prediction("70 Baldwin St, Toronto, Ontario, Canada, M5T 1L4", 'abc',
+              [], 'ChIJCVZhJc8fZUgR1czSYae30bQ', 'Ref', [], [], null)
         ];
       }
     } else {
@@ -127,15 +119,14 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
     print('selected address is web');
     _selectedAddress = Address(
       placeId: 'ChIJCVZhJc8fZUgR1czSYae30bQ',
-      formattedAddress:
-          "7 Plas Penrhyn, Penrhyn Bay, Llandudno, Conwy, UK, LL30 3EU",
-      number: '7',
-      street: 'Plas Penrhyn',
-      region: 'Penrhyn Bay',
-      city: 'Llandudno',
-      county: 'Conwy',
-      country: 'UK',
-      postcode: 'LL30 3EU',
+      formattedAddress: "70 Baldwin St, Toronto, Canada, M5T 1L4",
+      number: '70',
+      street: 'Baldwin St',
+      region: '',
+      city: 'Toronto',
+      county: 'Ontario',
+      country: 'Canada',
+      postcode: 'M5T 1L4',
     );
 
     // } else {
@@ -224,7 +215,7 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
                       hintText: AppLocalizations.of(context).translate('phone'),
                       labelText:
                           AppLocalizations.of(context).translate('phone')),
-                  initialCountryCode: 'GB',
+                  initialCountryCode: 'MX',
                   onChanged: (val) {
                     if (val.number.length == 10) {
                       FocusScope.of(context).unfocus();

@@ -1,11 +1,11 @@
-import 'package:intl/intl.dart';
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_cv_app/const/dummy_data.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/models/language.dart';
 import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/providers/my_info_data.dart';
+import 'package:my_cv_app/screens/app_my_info/profile_stack/portfolio_widget.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/skills_grid.dart';
 import 'package:provider/provider.dart';
@@ -25,24 +25,22 @@ class ProfileDetails extends StatelessWidget {
 
     List<Language> _savedLanguages;
 
-    if (isNanny) {
-      _myInfo = Provider.of<MyInfoProvider>(context).nanny;
-      _savedLanguages = DUMMY_LANGUAGES;
+    _myInfo = Provider.of<MyInfoProvider>(context).nanny;
+    _savedLanguages = DUMMY_LANGUAGES;
 
-      if (_savedLanguages != null && _savedLanguages.length > 0) {
-        _nativeLang = _savedLanguages
-                .where((lan) => lan.id == _myInfo.nativeLanguageId)
-                ?.first ??
-            '';
-        _myInfo.otherLanguages.forEach((key, value) {
-          _languages[_savedLanguages.where((lan) => lan.id == key).first] =
-              value;
-        });
-      }
-      if (_nativeLang != null) {
-        _languages[_nativeLang] = 'native';
-      }
+    if (_savedLanguages != null && _savedLanguages.length > 0) {
+      _nativeLang = _savedLanguages
+              .where((lan) => lan.id == _myInfo.nativeLanguageId)
+              ?.first ??
+          '';
+      _myInfo.otherLanguages.forEach((key, value) {
+        _languages[_savedLanguages.where((lan) => lan.id == key).first] = value;
+      });
     }
+    if (_nativeLang != null) {
+      _languages[_nativeLang] = 'native';
+    }
+
     return Container(
       padding: EdgeInsets.all(12.0),
       width: double.infinity,
@@ -197,6 +195,61 @@ class ProfileDetails extends StatelessWidget {
                     ],
                   ),
                 ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                AppLocalizations.of(context)
+                    .translate('portfolio')
+                    .toUpperCase(),
+                style: TextStyle(
+                    color: ThemeColors.GRAY_TEXT,
+                    fontSize: ThemeSizes.PARAGRAPH,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          //PORTFOLIO
+          Column(
+            children: [
+              PortfolioWidget(
+                title: 'General',
+                links: [
+                  Link(
+                    'GitHub',
+                    'https://github.com/naabrown19',
+                  ),
+                ],
+              ),
+              PortfolioWidget(
+                title: 'Cufflink.io',
+                links: [Link('Website', 'https://cufflink.io')],
+              ),
+              PortfolioWidget(
+                title: 'Mamá Gallina Sitters',
+                links: [
+                  Link('Website', 'https://mamagallinasitters.com'),
+                  Link('Demo',
+                      'https://youtube.com/playlist?list=PLjHM2KD9CFjSxZe4CYk7jzf67PcvaxbaG'),
+                ],
+              ),
+              PortfolioWidget(
+                title: 'HelpJack.io',
+                links: [
+                  Link('Website', 'https://helpjack.io'),
+                  Link('Demo', 'https://youtu.be/w70pAYlkdPU'),
+                ],
+              ),
+              PortfolioWidget(
+                title: 'Portal.app',
+                links: [
+                  Link('Demo', 'Coming Soon!'),
+                ],
+              ),
+            ],
+          ),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

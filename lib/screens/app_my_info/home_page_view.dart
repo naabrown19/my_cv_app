@@ -1,8 +1,8 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/screens/app_my_info/bottom_navigation.dart';
 import 'package:my_cv_app/screens/app_my_info/profile_stack/profile_screen.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 class NannyHomePageView extends StatefulWidget {
   @override
@@ -29,7 +29,7 @@ class _NannyHomePageViewState extends State<NannyHomePageView> {
       backgroundColor: ThemeColors.BACKGROUND,
       body: Center(
         child: Container(
-          constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
+          constraints: BoxConstraints(maxWidth: kIsWeb ? 600 : 1000),
           child: PageView(
             controller: _pageController,
             onPageChanged: (page) {

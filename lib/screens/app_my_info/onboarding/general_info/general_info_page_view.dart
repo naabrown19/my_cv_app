@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/providers/my_info_data.dart';
@@ -13,10 +14,10 @@ import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/continue_button.dart';
 import 'package:my_cv_app/widgets/common/language_selector.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
-import '../../../../const/theme.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:provider/provider.dart';
+
+import '../../../../const/theme.dart';
 
 class NannyGeneralInfoPageView extends StatefulWidget {
   @override
@@ -81,7 +82,7 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
             controller: _scrollController,
             child: Center(
               child: Container(
-                constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
+                constraints: BoxConstraints(maxWidth: kIsWeb ? 600 : 1000),
                 height: MediaQuery.of(context).size.height - 40,
                 margin: EdgeInsets.symmetric(
                     horizontal: ThemeSizes.MARGIN, vertical: 8.0),
@@ -93,7 +94,7 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
                       backgroundColor: ThemeColors.PRIMARY.withOpacity(0.2),
                       percent: _currentPage / _numPages,
                       width:
-                          kIsWeb ? 500 : MediaQuery.of(context).size.width - 32,
+                          kIsWeb ? 600 : MediaQuery.of(context).size.width - 32,
                       lineHeight: 10,
                       animateFromLastPercent: true,
                       animation: true,

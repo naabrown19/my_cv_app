@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/providers/my_info_data.dart';
 import 'package:my_cv_app/screens/app_my_info/onboarding/general_info/general_info_page_view.dart';
@@ -7,8 +8,8 @@ import 'package:my_cv_app/widgets/common/language_selector.dart';
 import 'package:my_cv_app/widgets/onboarding/account_type_container.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+
 import '../../const/theme.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 class SelectAccountScreen extends StatefulWidget {
   static const routeName = '/select-account-type';
@@ -62,7 +63,7 @@ class _SelectAccountScreenState extends State<SelectAccountScreen> {
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
+          constraints: BoxConstraints(maxWidth: kIsWeb ? 600 : 1000),
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/login/bg-circles.png'),
@@ -92,72 +93,74 @@ class _SelectAccountScreenState extends State<SelectAccountScreen> {
                             fontSize: ThemeSizes.CAPTION),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              _isFull = true;
-                              _isFront = false;
-                              _isBack = false;
-                            });
-                          },
-                          child: AccountTypeContainer(
-                              'Full-Stack',
-                              Column(
-                                children: [
-                                  FlutterLogo(),
-                                  Image.asset(
-                                    'assets/images/firebase_logo.png',
-                                    height: 24,
-                                  ),
-                                  Image.asset(
-                                    'assets/images/node_logo.png',
-                                    height: 24,
-                                  )
-                                ],
-                              ),
-                              _isFull ? ThemeColors.PRIMARY : Colors.white),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              _isFront = true;
-                              _isFull = false;
-                              _isBack = false;
-                            });
-                          },
-                          child: AccountTypeContainer(
-                              'Front-End',
-                              FlutterLogo(),
-                              _isFront ? ThemeColors.PRIMARY : Colors.white),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              _isFront = false;
-                              _isFull = false;
-                              _isBack = true;
-                            });
-                          },
-                          child: AccountTypeContainer(
-                              'Back-End',
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/firebase_logo.png',
-                                    height: 24,
-                                  ),
-                                  Image.asset(
-                                    'assets/images/node_logo.png',
-                                    height: 24,
-                                  )
-                                ],
-                              ),
-                              _isFront ? ThemeColors.PRIMARY : Colors.white),
-                        ),
-                      ],
+                    FittedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                _isFull = true;
+                                _isFront = false;
+                                _isBack = false;
+                              });
+                            },
+                            child: AccountTypeContainer(
+                                'Full-Stack',
+                                Column(
+                                  children: [
+                                    FlutterLogo(),
+                                    Image.asset(
+                                      'assets/images/firebase_logo.png',
+                                      height: 24,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/node_logo.png',
+                                      height: 24,
+                                    )
+                                  ],
+                                ),
+                                _isFull ? ThemeColors.PRIMARY : Colors.white),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                _isFront = true;
+                                _isFull = false;
+                                _isBack = false;
+                              });
+                            },
+                            child: AccountTypeContainer(
+                                'Front-End',
+                                FlutterLogo(),
+                                _isFront ? ThemeColors.PRIMARY : Colors.white),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                _isFront = false;
+                                _isFull = false;
+                                _isBack = true;
+                              });
+                            },
+                            child: AccountTypeContainer(
+                                'Back-End',
+                                Column(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/firebase_logo.png',
+                                      height: 24,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/node_logo.png',
+                                      height: 24,
+                                    )
+                                  ],
+                                ),
+                                _isFront ? ThemeColors.PRIMARY : Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 20),
                     _isFull

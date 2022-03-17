@@ -1,9 +1,9 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/screens/app_my_info/profile_stack/profile_details.dart';
 import 'package:my_cv_app/screens/app_my_info/profile_stack/reviews.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 class MainSectionPageView extends StatefulWidget {
   @override
@@ -107,9 +107,11 @@ class _MainSectionPageViewState extends State<MainSectionPageView> {
         ),
         Container(
           height: kIsWeb
-              ? 1250
+              ? _selectedPageIndex == 0
+                  ? 1572
+                  : 300
               : _selectedPageIndex == 0
-                  ? 1100
+                  ? 1422
                   : 200,
           margin: EdgeInsets.only(bottom: 8.0),
           decoration: BoxDecoration(
