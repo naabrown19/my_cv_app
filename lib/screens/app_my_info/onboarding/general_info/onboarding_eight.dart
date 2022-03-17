@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/dummy_data.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/models/language.dart';
-import 'package:my_cv_app/models/nanny.dart';
+import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/question_button.dart';
 
@@ -165,7 +165,7 @@ class _NannyOnboardingEightScreenState
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             InkWell(
-                              onTap: (){},
+                              onTap: () {},
                               child: QuestionButton(
                                 labelKey: 'basic',
                                 isSelected: widget.nanny.otherLanguages == null
@@ -179,7 +179,9 @@ class _NannyOnboardingEightScreenState
                                             ? true
                                             : false
                                         : false,
-                                width: kIsWeb?150: MediaQuery.of(context).size.width * 0.28,
+                                width: kIsWeb
+                                    ? 150
+                                    : MediaQuery.of(context).size.width * 0.28,
                                 fontSize: 14,
                               ),
                             ),
@@ -198,7 +200,9 @@ class _NannyOnboardingEightScreenState
                                             ? true
                                             : false
                                         : false,
-                                width: kIsWeb?150:MediaQuery.of(context).size.width * 0.28,
+                                width: kIsWeb
+                                    ? 150
+                                    : MediaQuery.of(context).size.width * 0.28,
                                 fontSize: 14,
                               ),
                             ),
@@ -218,7 +222,9 @@ class _NannyOnboardingEightScreenState
                                             ? true
                                             : false
                                         : false,
-                                width: kIsWeb?150:MediaQuery.of(context).size.width * 0.28,
+                                width: kIsWeb
+                                    ? 150
+                                    : MediaQuery.of(context).size.width * 0.28,
                                 fontSize: 14,
                               ),
                             ),

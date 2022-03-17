@@ -18,13 +18,16 @@ class ReviewListItem extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(radius: 20, child: FlutterLogo(),),
+              CircleAvatar(
+                radius: 20,
+                child: FlutterLogo(),
+              ),
               const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    review.id=='1'?'Joe Bloggs':'Rod Knee',
+                    review.reviewerName,
                     style: TextStyle(
                         color: ThemeColors.DARK_GRAY,
                         fontSize: ThemeSizes.SUBTITLE,

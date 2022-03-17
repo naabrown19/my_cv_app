@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_cv_app/providers/nanny_data.dart';
-import 'package:my_cv_app/screens/app_nanny/onboarding/general_info/general_info_page_view.dart';
+import 'package:my_cv_app/providers/my_info_data.dart';
+import 'package:my_cv_app/screens/app_my_info/onboarding/general_info/general_info_page_view.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/continue_button.dart';
 import 'package:my_cv_app/widgets/common/language_selector.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/models/nanny.dart';
+import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/onboarding/experience_row.dart';
 
@@ -15,7 +15,6 @@ class NannyOnboardingSevenScreen extends StatefulWidget {
 
 class _NannyOnboardingSevenScreenState
     extends State<NannyOnboardingSevenScreen> {
-
   @override
   void initState() {
     super.initState();
@@ -72,21 +71,21 @@ class _NannyOnboardingSevenScreenState
                     ExperienceRow(
                       textKey: 'nanny_ob_seven_baby',
                       nanny: widget.myInfo,
-                      nannyKey: 'baby',
+                      nannyKey: 'flutter',
                       index: 1,
                     ),
                     ExperienceRow(
                       imagePath: 'assets/images/firebase_logo.png',
                       textKey: 'nanny_ob_seven_young',
                       nanny: widget.myInfo,
-                      nannyKey: 'young',
+                      nannyKey: 'firebase',
                       index: 2,
                     ),
                     ExperienceRow(
                       imagePath: 'assets/images/node_logo.png',
                       textKey: 'nanny_ob_seven_old',
                       nanny: widget.myInfo,
-                      nannyKey: 'old',
+                      nannyKey: 'node',
                       index: 3,
                     )
                   ],

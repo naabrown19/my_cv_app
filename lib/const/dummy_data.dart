@@ -6,91 +6,51 @@ import 'package:my_cv_app/models/review.dart';
 import '../models/skill.dart';
 
 const DUMMY_SKILLS = const [
-  Skill(
-      id: '1',
-      skill: 'Flutter',
-      active: true,
-      isNannySelect: true,
-      skillEs: 'Flutter'),
-  Skill(
-      id: '2',
-      skill: 'Firebase',
-      active: true,
-      isNannySelect: true,
-      skillEs: 'Firebase'),
+  Skill(id: '1', skill: 'Flutter', active: true, skillEs: 'Flutter'),
+  Skill(id: '2', skill: 'Firebase', active: true, skillEs: 'Firebase'),
   Skill(
       id: '3',
       skill: 'Node.JS',
       active: true,
-      isNannySelect: true,
       skillEs: 'Amigable con Mascotas'),
   Skill(
       id: '4',
       skill: 'Kotlin',
       active: true,
-      isNannySelect: true,
       skillEs: 'Certificado de Primeros Auxilios'),
   Skill(
       id: '5',
       skill: 'Swift',
       active: true,
-      isNannySelect: true,
       skillEs: 'Certificado en Educación temprana'),
-  
+
   Skill(
       id: '7',
       skill: 'Python',
       active: true,
-      isNannySelect: true,
       skillEs: 'Experta en alimentación en bebés'),
   Skill(
       id: '8',
       skill: 'SQL',
       active: true,
-      isNannySelect: true,
       skillEs: 'Hablilidades en enseñanza'),
   Skill(
-      id: '9',
-      skill: 'NoSQL',
-      active: true,
-      isNannySelect: true,
-      skillEs: 'Ciencia y Matemáticas'),
+      id: '9', skill: 'NoSQL', active: true, skillEs: 'Ciencia y Matemáticas'),
   Skill(
       id: '6',
       skill: 'Java',
       active: true,
-      isNannySelect: true,
       skillEs: 'Enseñanza de idiomas certificada'),
+  Skill(id: '10', skill: 'C#', active: true, skillEs: 'Arte y Manualidades'),
   Skill(
-      id: '10',
-      skill: 'C#',
-      active: true,
-      isNannySelect: true,
-      skillEs: 'Arte y Manualidades'),
-  Skill(
-      id: '11',
-      skill: 'MongoDB',
-      active: true,
-      isNannySelect: true,
-      skillEs: 'Arte y Manualidades'),
+      id: '11', skill: 'MongoDB', active: true, skillEs: 'Arte y Manualidades'),
   Skill(
       id: '12',
       skill: 'React Native',
       active: true,
-      isNannySelect: true,
       skillEs: 'Arte y Manualidades'),
-  Skill(
-      id: '13',
-      skill: 'React',
-      active: true,
-      isNannySelect: true,
-      skillEs: 'Arte y Manualidades'),
-  Skill(
-      id: '15',
-      skill: 'VBA',
-      active: true,
-      isNannySelect: true,
-      skillEs: 'Arte y Manualidades')
+  Skill(id: '13', skill: 'React', active: true, skillEs: 'Arte y Manualidades'),
+  Skill(id: '15', skill: 'VBA', active: true, skillEs: 'Arte y Manualidades')
   // Skill(
   //     id: '18',
   //     skill: 'Music',
@@ -180,20 +140,16 @@ const DUMMY_LANGUAGES = [
 
 const DUMMY_REVIEWS = [
   Review(
-      id: '1',
-      comments: 'Neil did a great job',
-      familyId: 'test',
-      nannyId: 'test',
-      score: 5,
-      serviceId: 'test',
-      reviewType: 'nanny'),
+    id: '1',
+    comments: 'Neil did a great job',
+    score: 5,
+    reviewerName: 'Joe Bloggs',
+  ),
   Review(
-      id: '2',
-      comments:
-          'Neil created an app that works on iOS and Android, with a well-structured Firedbase database that is easy to understand.',
-      familyId: 'test',
-      nannyId: 'test',
-      score: 5,
-      serviceId: 'test',
-      reviewType: 'nanny'),
+    id: '2',
+    comments:
+        'Neil created an app that works on iOS and Android, with a well-structured Firedbase database that is easy to understand.',
+    score: 5,
+    reviewerName: 'Rod Knee',
+  ),
 ];

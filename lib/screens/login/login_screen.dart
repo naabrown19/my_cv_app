@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/providers/nanny_data.dart';
+import 'package:my_cv_app/providers/my_info_data.dart';
 import 'package:my_cv_app/screens/login/select_account_screen.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/language_selector.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/dummy_data.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/models/nanny.dart';
+import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/models/skill.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/skills_grid.dart';

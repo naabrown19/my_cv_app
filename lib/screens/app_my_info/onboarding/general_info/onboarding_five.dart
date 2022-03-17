@@ -1,14 +1,14 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:google_maps_webservice/places.dart';
-import 'package:my_cv_app/models/address.dart';
-import 'package:my_cv_app/models/nanny.dart';
-import 'package:my_cv_app/services/app_localizations.dart';
-import 'package:my_cv_app/services/config_reader.dart';
-import 'package:my_cv_app/widgets/common/selected_address_fields.dart';
-import '../../../../const/theme.dart';
 import 'package:google_place/google_place.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:my_cv_app/models/address.dart';
+import 'package:my_cv_app/models/my_info.dart';
+import 'package:my_cv_app/services/app_localizations.dart';
+import 'package:my_cv_app/widgets/common/selected_address_fields.dart';
+
+import '../../../../const/theme.dart';
 
 class NannyOnboardingFiveScreen extends StatefulWidget {
   final MyInfo nanny;
@@ -23,8 +23,6 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
   GooglePlace googlePlace;
   List<AutocompletePrediction> predictions = [];
   var sessionToken = 'TEST';
-  final places =
-      GoogleMapsPlaces(apiKey: ConfigReader.getGoogleApi());
   List<Prediction> webPredictions = [];
 
   bool _addressEdited = false;
@@ -41,7 +39,7 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
   @override
   void initState() {
     super.initState();
-    _scrollController= ScrollController();
+    _scrollController = ScrollController();
     googlePlace = GooglePlace('AIzaSyBb3o3TifyAVSvr3OVO9FQv-urnX4GHUSc');
     _startInput();
     print('KIsWeb is $kIsWeb');
@@ -169,7 +167,11 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
     setState(() {
       _addressEdited = false;
     });
-    await _scrollController.animateTo(200, duration: const Duration(milliseconds: 300), curve: Curves.easeIn,);
+    await _scrollController.animateTo(
+      200,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeIn,
+    );
   }
 
   @override

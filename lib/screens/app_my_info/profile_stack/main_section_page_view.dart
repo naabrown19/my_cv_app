@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/screens/app_nanny/profile_stack/profile_details.dart';
-import 'package:my_cv_app/screens/app_nanny/profile_stack/reviews.dart';
+import 'package:my_cv_app/screens/app_my_info/profile_stack/profile_details.dart';
+import 'package:my_cv_app/screens/app_my_info/profile_stack/reviews.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
@@ -106,7 +106,11 @@ class _MainSectionPageViewState extends State<MainSectionPageView> {
           ),
         ),
         Container(
-          height: kIsWeb ? 1250 : _selectedPageIndex == 0 ? 1100 : 200,
+          height: kIsWeb
+              ? 1250
+              : _selectedPageIndex == 0
+                  ? 1100
+                  : 200,
           margin: EdgeInsets.only(bottom: 8.0),
           decoration: BoxDecoration(
               color: Colors.white,

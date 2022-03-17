@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/providers/nanny_data.dart';
+import 'package:my_cv_app/providers/my_info_data.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:provider/provider.dart';
 

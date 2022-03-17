@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:my_cv_app/models/education.dart';
-import 'package:my_cv_app/models/nanny.dart';
+import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/models/review.dart';
 import 'package:my_cv_app/models/skill.dart';
 import 'package:my_cv_app/models/work_experience.dart';
@@ -33,89 +33,64 @@ class MyInfoProvider extends ChangeNotifier {
             groups: [])
       ],
       selectedSkills: [
-        Skill(
-            id: '1',
-            skill: 'Flutter',
-            active: true,
-            isNannySelect: true,
-            skillEs: 'Flutter'),
-        Skill(
-            id: '2',
-            skill: 'Firebase',
-            active: true,
-            isNannySelect: true,
-            skillEs: 'Firebase'),
-        Skill(
-            id: '3',
-            skill: 'Node.JS',
-            active: true,
-            isNannySelect: true,
-            skillEs: 'Node.JS'),
+        Skill(id: '1', skill: 'Flutter', active: true, skillEs: 'Flutter'),
+        Skill(id: '2', skill: 'Firebase', active: true, skillEs: 'Firebase'),
+        Skill(id: '3', skill: 'Node.JS', active: true, skillEs: 'Node.JS'),
         Skill(
             id: '7',
             skill: 'Python',
             active: true,
-            isNannySelect: true,
             skillEs: 'Experta en alimentación en bebés'),
         Skill(
             id: '8',
             skill: 'SQL',
             active: true,
-            isNannySelect: true,
             skillEs: 'Hablilidades en enseñanza'),
         Skill(
             id: '9',
             skill: 'NoSQL',
             active: true,
-            isNannySelect: true,
             skillEs: 'Ciencia y Matemáticas'),
         Skill(
             id: '11',
             skill: 'MongoDB',
             active: true,
-            isNannySelect: true,
             skillEs: 'Arte y Manualidades'),
         Skill(
             id: '12',
             skill: 'React Native',
             active: true,
-            isNannySelect: true,
             skillEs: 'Arte y Manualidades'),
         Skill(
             id: '15',
             skill: 'VBA',
             active: true,
-            isNannySelect: true,
             skillEs: 'Arte y Manualidades')
       ],
       email: 'naabrown19@gmail.com',
-      experiences: {'baby': '2', 'young': '2', 'old': '2'},
+      experiences: {'flutter': '3', 'firebase': '3', 'node': '3'},
       lastName: 'Brown',
       firstName: 'Neil',
       nativeLanguageId: '1ae',
       otherLanguages: {'2ae': 'intermediate'},
       reviews: [
         Review(
-            id: '2',
-            comments:
-                'Neil created an app that works on iOS, Android, and now Web! with a well-structured Firedbase database that is easy to understand.',
-            familyId: 'test',
-            nannyId: 'test',
-            score: 5,
-            serviceId: 'test',
-            reviewType: 'nanny'),
-            Review(
-            id: '2',
-            comments: 'Neil did a great job at creating our cross-platform application.',
-            familyId: 'test',
-            nannyId: 'test',
-            score: 5,
-            serviceId: 'test',
-            reviewType: 'nanny'),
-        
+          id: '1',
+          comments:
+              'Neil created an app that works on iOS, Android, and now Web! with a well-structured Firedbase database that is easy to understand.',
+          reviewerName: 'Rod Knee',
+          score: 5,
+        ),
+        Review(
+          id: '2',
+          comments:
+              'Neil did a great job at creating our cross-platform application.',
+          score: 5,
+          reviewerName: 'Joe Bloggs',
+        ),
       ],
       workExperience: [
-         WorkExperience(
+        WorkExperience(
             jobTitle: 'Software Developer',
             companyName: 'Cufflink.io',
             startDate: DateTime(2020, 04, 01),
@@ -152,7 +127,7 @@ class MyInfoProvider extends ChangeNotifier {
             endDate: DateTime(2015, 07, 01),
             responsibilities: []),
       ]);
-  
+
   String _currentLang;
 
   MyInfo get nanny {
@@ -163,7 +138,7 @@ class MyInfoProvider extends ChangeNotifier {
     return _currentLang ?? 'EN';
   }
 
-  void setCurrentLang(String lang){
+  void setCurrentLang(String lang) {
     _currentLang = lang;
     notifyListeners();
   }

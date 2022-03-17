@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/providers/nanny_data.dart';
-import 'package:my_cv_app/screens/app_nanny/profile_stack/main_section_page_view.dart';
-import 'package:my_cv_app/screens/app_nanny/profile_stack/top_section.dart';
+import 'package:my_cv_app/providers/my_info_data.dart';
+import 'package:my_cv_app/screens/app_my_info/profile_stack/main_section_page_view.dart';
+import 'package:my_cv_app/screens/app_my_info/profile_stack/top_section.dart';
 import 'package:my_cv_app/screens/login/initial_onboarding/initial_onboarding_page_view.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/services/config_reader.dart';
@@ -39,8 +39,7 @@ class ProfileScreen extends StatelessWidget {
                     textColor: Colors.white,
                     textWeight: FontWeight.bold,
                     onPressed: () async {
-                      final url =
-                          ConfigReader.getCvShareLink();
+                      final url = ConfigReader.getCvShareLink();
                       if (await canLaunch(url)) {
                         await launch(url,
                             forceSafariVC: false, forceWebView: false);

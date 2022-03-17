@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:my_cv_app/models/nanny.dart';
+import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/models/skill.dart';
 import 'package:my_cv_app/widgets/common/question_button.dart';
 
@@ -11,7 +11,11 @@ class SkillsGrid extends StatefulWidget {
   final Function nextPage;
   final bool start;
   SkillsGrid(
-      {this.allSkills, this.nanny, this.editMode, this.nextPage, this.start=false});
+      {this.allSkills,
+      this.nanny,
+      this.editMode,
+      this.nextPage,
+      this.start = false});
 
   @override
   _SkillsGridState createState() => _SkillsGridState();
@@ -26,8 +30,8 @@ class _SkillsGridState extends State<SkillsGrid> {
   @override
   void initState() {
     super.initState();
-      _scrollController = ScrollController();
-    if(widget.start) {
+    _scrollController = ScrollController();
+    if (widget.start) {
       _startInput();
     }
   }
@@ -36,11 +40,11 @@ class _SkillsGridState extends State<SkillsGrid> {
     print('selecting skills');
     if (select.length != widget.nanny.selectedSkills.length) {
       select.add(widget.nanny.selectedSkills[_skillStep].id);
-      setState(() {
-      });
+      setState(() {});
       _skillStep += 1;
-      if((_skillStep % 6) == 0 && _skillStep!=0){
-        _scrollController.animateTo(300, duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+      if ((_skillStep % 6) == 0 && _skillStep != 0) {
+        _scrollController.animateTo(300,
+            duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
       }
       Future.delayed(Duration(milliseconds: 300)).then((value) {
         _startInput();
@@ -72,7 +76,7 @@ class _SkillsGridState extends State<SkillsGrid> {
       physics:
           widget.editMode ? ScrollPhysics() : NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      childAspectRatio: kIsWeb ? 6/1 : 4 / 1,
+      childAspectRatio: kIsWeb ? 6 / 1 : 4 / 1,
       mainAxisSpacing: 10,
       crossAxisSpacing: 10,
       crossAxisCount: 2,
@@ -84,7 +88,9 @@ class _SkillsGridState extends State<SkillsGrid> {
                       labelKey: e.skill,
                       isSelected: select == null
                           ? false
-                          : select.contains(e.id) ? true : false,
+                          : select.contains(e.id)
+                              ? true
+                              : false,
                     ),
                   ))
               .toList()

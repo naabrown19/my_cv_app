@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/screens/app_nanny/bottom_navigation.dart';
-import 'package:my_cv_app/screens/app_nanny/profile_stack/profile_screen.dart';
+import 'package:my_cv_app/screens/app_my_info/bottom_navigation.dart';
+import 'package:my_cv_app/screens/app_my_info/profile_stack/profile_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class NannyHomePageView extends StatefulWidget {
@@ -31,12 +31,12 @@ class _NannyHomePageViewState extends State<NannyHomePageView> {
         child: Container(
           constraints: BoxConstraints(maxWidth: kIsWeb ? 500 : 1000),
           child: PageView(
-                  controller: _pageController,
-                  onPageChanged: (page) {
-                    selectPage(page);
-                  },
-                  children: _pages,
-                ),
+            controller: _pageController,
+            onPageChanged: (page) {
+              selectPage(page);
+            },
+            children: _pages,
+          ),
         ),
       ),
       bottomNavigationBar:

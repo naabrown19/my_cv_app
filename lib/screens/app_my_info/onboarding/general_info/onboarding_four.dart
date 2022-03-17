@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/models/nanny.dart';
+import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 
 class NannyOnboardingFourScreen extends StatefulWidget {
@@ -78,7 +78,8 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
         _startInput();
       });
     } else if (_dayController.text.length != 2) {
-      _scrollController.animateTo(200, duration: Duration(milliseconds: 200), curve: Curves.easeIn);
+      _scrollController.animateTo(200,
+          duration: Duration(milliseconds: 200), curve: Curves.easeIn);
       setState(() {
         _dayController.text = '19';
       });

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/models/nanny.dart';
-import 'package:my_cv_app/providers/nanny_data.dart';
+import 'package:my_cv_app/models/my_info.dart';
+import 'package:my_cv_app/providers/my_info_data.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -57,7 +57,10 @@ class TopSection extends StatelessWidget {
                       ),
                       textAlign: TextAlign.start,
                     ),
-                    Text('${_myInfo.phoneIso}-${_myInfo.phoneNo},\n${_myInfo.email}', style: TextStyle(color: ThemeColors.DARK_GRAY),)
+                    Text(
+                      '${_myInfo.phoneIso}-${_myInfo.phoneNo},\n${_myInfo.email}',
+                      style: TextStyle(color: ThemeColors.DARK_GRAY),
+                    )
                   ],
                 ),
                 const SizedBox(height: 10),

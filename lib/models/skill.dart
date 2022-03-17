@@ -5,7 +5,6 @@ class Skill {
   final String skill;
   final bool active;
   final double order;
-  final bool isNannySelect;
   final String skillEs;
 
   const Skill(
@@ -13,6 +12,5 @@ class Skill {
       @required this.skill,
       this.active = true,
       this.order,
-      this.isNannySelect = true,
       this.skillEs});
 }

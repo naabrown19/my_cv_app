@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_cv_app/models/nanny.dart';
-import 'package:my_cv_app/providers/nanny_data.dart';
+import 'package:my_cv_app/models/my_info.dart';
+import 'package:my_cv_app/providers/my_info_data.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
-import 'package:my_cv_app/widgets/nanny/review_list_item.dart';
+import 'package:my_cv_app/widgets/my_info/review_list_item.dart';
 import 'package:provider/provider.dart';
 
 class ReviewList extends StatelessWidget {

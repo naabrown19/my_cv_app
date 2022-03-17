@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
-import 'package:my_cv_app/providers/nanny_data.dart';
+import 'package:my_cv_app/providers/my_info_data.dart';
 import 'package:my_cv_app/screens/login/initial_onboarding/initial_onboarding_1.dart';
 import 'package:my_cv_app/screens/login/initial_onboarding/initial_onboarding_2.dart';
 import 'package:my_cv_app/screens/login/initial_onboarding/initial_onboarding_3.dart';
@@ -31,7 +31,7 @@ class _InitialOnboardingPageViewState extends State<InitialOnboardingPageView> {
       Provider.of<MyInfoProvider>(context, listen: false)
           .setCurrentLang(Localizations.localeOf(context).languageCode);
     });
-    Future.delayed(Duration(seconds: _currentPage==0?3:4)).then((value) {
+    Future.delayed(Duration(seconds: _currentPage == 0 ? 3 : 4)).then((value) {
       _nextPage();
     });
   }

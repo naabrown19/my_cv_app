@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/dummy_data.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/models/language.dart';
-import 'package:my_cv_app/models/nanny.dart';
-import 'package:my_cv_app/providers/nanny_data.dart';
+import 'package:my_cv_app/models/my_info.dart';
+import 'package:my_cv_app/providers/my_info_data.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/skills_grid.dart';
 import 'package:provider/provider.dart';
@@ -79,8 +79,8 @@ class ProfileDetails extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if (_myInfo.experiences.containsKey('baby') &&
-                    int.parse(_myInfo.experiences['baby']) > 0)
+                if (_myInfo.experiences.containsKey('flutter') &&
+                    int.parse(_myInfo.experiences['flutter']) > 0)
                   Column(
                     children: [
                       Container(height: 60, width: 60, child: FlutterLogo()),
@@ -94,15 +94,15 @@ class ProfileDetails extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        '${_myInfo.experiences['baby']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
+                        '${_myInfo.experiences['flutter']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
                         style: TextStyle(
                             color: ThemeColors.DARK_GRAY,
                             fontSize: ThemeSizes.CAPTION),
                       )
                     ],
                   ),
-                if (_myInfo.experiences.containsKey('young') &&
-                    int.parse(_myInfo.experiences['young']) > 0)
+                if (_myInfo.experiences.containsKey('firebase') &&
+                    int.parse(_myInfo.experiences['firebase']) > 0)
                   Column(
                     children: [
                       Image.asset(
@@ -120,15 +120,15 @@ class ProfileDetails extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        '${_myInfo.experiences['young']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
+                        '${_myInfo.experiences['firebase']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
                         style: TextStyle(
                             color: ThemeColors.DARK_GRAY,
                             fontSize: ThemeSizes.CAPTION),
                       )
                     ],
                   ),
-                if (_myInfo.experiences.containsKey('old') &&
-                    int.parse(_myInfo.experiences['old']) > 0)
+                if (_myInfo.experiences.containsKey('node') &&
+                    int.parse(_myInfo.experiences['node']) > 0)
                   Column(
                     children: [
                       Image.asset(
@@ -146,7 +146,7 @@ class ProfileDetails extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        '${_myInfo.experiences['old']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
+                        '${_myInfo.experiences['node']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
                         style: TextStyle(
                             color: ThemeColors.GRAY_TEXT,
                             fontSize: ThemeSizes.CAPTION),
@@ -193,7 +193,7 @@ class ProfileDetails extends StatelessWidget {
                             color: ThemeColors.DARK_GRAY,
                             fontSize: ThemeSizes.PARAGRAPH),
                       ),
-                      const SizedBox(height:5),
+                      const SizedBox(height: 5),
                     ],
                   ),
                 ),
