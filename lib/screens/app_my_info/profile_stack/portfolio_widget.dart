@@ -34,17 +34,15 @@ class PortfolioWidget extends StatelessWidget {
                     GestureDetector(
                       onTap: () =>
                           e.url == 'Coming Soon!' ? null : launch(e.url),
-                      child: FittedBox(
-                        child: Text(
-                          e.url,
-                          style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                            fontSize: ThemeSizes.PARAGRAPH,
-                          ),
-                          softWrap: true,
-                          textAlign: TextAlign.start,
+                      child: Text(
+                        e.url,
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                          fontSize: ThemeSizes.PARAGRAPH,
                         ),
+                        softWrap: true,
+                        textAlign: TextAlign.start,
                       ),
                     ),
                   ],
