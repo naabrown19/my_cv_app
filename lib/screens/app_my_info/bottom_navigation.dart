@@ -18,20 +18,16 @@ class BottomNavigationNanny extends StatelessWidget {
         elevation: 4,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            activeIcon: Icon(
-              Icons.person_outline,
-              color: ThemeColors.SECONDARY,
-            ),
-            backgroundColor: Colors.white,
-            icon: Icon(
-              Icons.person_outline,
-              color: ThemeColors.DARK_GRAY,
-            ),
-            title: Text(
-              AppLocalizations.of(context).translate('profile'),
-              style: TextStyle(color: ThemeColors.SECONDARY),
-            ),
-          ),
+              activeIcon: Icon(
+                Icons.person_outline,
+                color: ThemeColors.SECONDARY,
+              ),
+              backgroundColor: Colors.white,
+              icon: Icon(
+                Icons.person_outline,
+                color: ThemeColors.DARK_GRAY,
+              ),
+              label: AppLocalizations.of(context).translate('profile')),
           BottomNavigationBarItem(
             activeIcon: Icon(
               Icons.calendar_today,
@@ -42,8 +38,7 @@ class BottomNavigationNanny extends StatelessWidget {
               Icons.calendar_today,
               color: ThemeColors.DARK_GRAY,
             ),
-            title: Text(AppLocalizations.of(context).translate('calendar'),
-                style: TextStyle(color: ThemeColors.SECONDARY)),
+            label: AppLocalizations.of(context).translate('calendar'),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.white,
@@ -52,8 +47,7 @@ class BottomNavigationNanny extends StatelessWidget {
               Icons.message,
               color: ThemeColors.DARK_GRAY,
             ),
-            title: Text(AppLocalizations.of(context).translate('messages'),
-                style: TextStyle(color: ThemeColors.SECONDARY)),
+            label: AppLocalizations.of(context).translate('messages'),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.white,
@@ -65,8 +59,7 @@ class BottomNavigationNanny extends StatelessWidget {
               Icons.notifications,
               color: ThemeColors.DARK_GRAY,
             ),
-            title: Text(AppLocalizations.of(context).translate('notifications'),
-                style: TextStyle(color: ThemeColors.SECONDARY)),
+            label: AppLocalizations.of(context).translate('notifications'),
           ),
         ],
         selectedItemColor: ThemeColors.SECONDARY,

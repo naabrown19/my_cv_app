@@ -245,7 +245,7 @@ class ProfileDetails extends StatelessWidget {
               PortfolioWidget(
                 title: 'Portal.app',
                 links: [
-                  Link('Demo', 'Coming Soon!'),
+                  Link('Demo', 'https://portaldev-cf275.web.app'),
                 ],
               ),
             ],

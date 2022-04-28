@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/providers/my_info_data.dart';
@@ -8,7 +9,6 @@ import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/services/config_reader.dart';
 import 'package:my_cv_app/widgets/common/app_bar.dart';
 import 'package:my_cv_app/widgets/common/continue_button.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';

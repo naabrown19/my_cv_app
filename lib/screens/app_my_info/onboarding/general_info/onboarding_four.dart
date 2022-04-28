@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
@@ -108,18 +107,6 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
     super.dispose();
     _focusNodes.forEach((fn) => fn?.dispose());
     _formKey.currentState?.dispose();
-  }
-
-  Future<void> _selectImage() async {
-    final _picker = ImagePicker();
-    final imageFile = await _picker.getImage(
-      source: ImageSource.gallery,
-      maxWidth: 600,
-    );
-    if (imageFile == null) {
-      return;
-    } else {}
-    setState(() {});
   }
 
   @override

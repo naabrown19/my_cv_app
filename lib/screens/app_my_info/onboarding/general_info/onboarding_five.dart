@@ -100,19 +100,12 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
   }
 
   Future<void> _selectAddress(int index) async {
-    DetailsResponse result;
-    PlacesDetailsResponse webResult;
     if (kIsWeb) {
       // webResult = await places.getDetailsByPlaceId(
       //     webPredictions[index].placeId,
       //     language: Localizations.localeOf(context).languageCode,
       //     region: Localizations.localeOf(context).countryCode);
-    } else {
-      print('PLACE ID FOR PBAY IS ${predictions[index].placeId}');
-      result = await googlePlace.details.get(predictions[index].placeId,
-          region: Localizations.localeOf(context).countryCode,
-          language: Localizations.localeOf(context).languageCode);
-    }
+    } else {}
 
     _addressController.text = '';
     // if (kIsWeb) {

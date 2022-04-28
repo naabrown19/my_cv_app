@@ -53,18 +53,6 @@ class _NannyOnboardingEightScreenState
         _languages.where((element) => element.id != dropdownValue.id).toList();
   }
 
-  void _selectLanguageLevel(String languageId, String level) {
-    print('language id is $languageId');
-    print('level is $level');
-    if (widget.nanny.otherLanguages == null) {
-      map[languageId] = level;
-    } else if (widget.nanny.otherLanguages.containsKey(languageId)) {
-      if (widget.nanny.otherLanguages[languageId] == level) {
-      } else {}
-    } else {}
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
