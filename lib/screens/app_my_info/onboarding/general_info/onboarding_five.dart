@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:google_maps_webservice/places.dart';
 import 'package:google_place/google_place.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:my_cv_app/models/address.dart';
@@ -23,7 +22,7 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
   GooglePlace googlePlace;
   List<AutocompletePrediction> predictions = [];
   var sessionToken = 'TEST';
-  List<Prediction> webPredictions = [];
+  List<String> webPredictions = [];
 
   bool _addressEdited = false;
   final _addressController = TextEditingController();
@@ -84,10 +83,7 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
       //   });
       // }
       if (_addressController.text.length > 7) {
-        webPredictions = [
-          Prediction("70 Baldwin St, Toronto, Ontario, Canada, M5T 1L4", 'abc',
-              [], 'ChIJCVZhJc8fZUgR1czSYae30bQ', 'Ref', [], [], null)
-        ];
+        webPredictions = ["70 Baldwin St, Toronto, Ontario, Canada, M5T 1L4"];
       }
     } else {
       var result = await googlePlace.autocomplete.get(value);
@@ -270,7 +266,7 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
                               ),
                             ),
                             title: Text(kIsWeb
-                                ? webPredictions[index].description
+                                ? webPredictions[index]
                                 : predictions[index].description),
                             onTap: () => _selectAddress(index),
                           );
