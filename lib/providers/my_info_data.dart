@@ -10,8 +10,8 @@ import '../const/dummy_data.dart';
 
 class MyInfoProvider extends ChangeNotifier {
   MyInfo _myInfo = MyInfo(
-      phoneIso: '+52',
-      phoneNo: '5572032336',
+      phoneIso: '+1',
+      phoneNo: '6475680043',
       id: 'test',
       averageReviewRating: 5,
       serviceCount: 2,
@@ -92,9 +92,15 @@ class MyInfoProvider extends ChangeNotifier {
       workExperience: [
         WorkExperience(
             jobTitle: 'Software Developer',
-            companyName: 'Cufflink.io',
-            startDate: DateTime(2020, 04, 01),
+            companyName: 'mmhg.ca',
+            startDate: DateTime(2022, 04, 01),
             endDate: DateTime.now(),
+            responsibilities: []),
+        WorkExperience(
+            jobTitle: 'Software Developer',
+            companyName: 'Cufflink.io',
+            startDate: DateTime(2021, 04, 01),
+            endDate: DateTime(2022, 7, 31),
             responsibilities: []),
         WorkExperience(
             jobTitle: 'Technical Analyst',
@@ -130,7 +136,7 @@ class MyInfoProvider extends ChangeNotifier {
 
   String _currentLang;
 
-  MyInfo get nanny {
+  MyInfo get myInfo {
     return _myInfo;
   }
 

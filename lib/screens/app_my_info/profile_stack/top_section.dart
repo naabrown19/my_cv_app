@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 class TopSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    MyInfo _myInfo = Provider.of<MyInfoProvider>(context).nanny;
+    MyInfo _myInfo = Provider.of<MyInfoProvider>(context).myInfo;
     String _nannyName =
         '${_myInfo.firstName ?? 'Update Name'} ${_myInfo.lastName ?? ''} ${_myInfo.secondLastName ?? ''}';
 

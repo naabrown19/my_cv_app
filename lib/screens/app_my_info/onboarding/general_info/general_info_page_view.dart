@@ -46,7 +46,7 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
     super.didChangeDependencies();
     if (_isInit) {
       _lang = Provider.of<MyInfoProvider>(context).currentLang;
-      _myInfo = Provider.of<MyInfoProvider>(context, listen: false).nanny;
+      _myInfo = Provider.of<MyInfoProvider>(context, listen: false).myInfo;
       //get lanuages, skills, special cares, questions
       String _locale = Localizations.localeOf(context).languageCode;
       print(_locale);

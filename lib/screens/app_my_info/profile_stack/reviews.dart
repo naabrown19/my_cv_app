@@ -14,7 +14,7 @@ class ReviewList extends StatelessWidget {
   Widget build(BuildContext context) {
     MyInfo _myInfo;
 
-    _myInfo = Provider.of<MyInfoProvider>(context, listen: false).nanny;
+    _myInfo = Provider.of<MyInfoProvider>(context, listen: false).myInfo;
 
     return _myInfo.reviews != null && _myInfo.reviews.length > 0
         ? Container(

@@ -25,7 +25,7 @@ class ProfileDetails extends StatelessWidget {
 
     List<Language> _savedLanguages;
 
-    _myInfo = Provider.of<MyInfoProvider>(context).nanny;
+    _myInfo = Provider.of<MyInfoProvider>(context).myInfo;
     _savedLanguages = DUMMY_LANGUAGES;
 
     if (_savedLanguages != null && _savedLanguages.length > 0) {

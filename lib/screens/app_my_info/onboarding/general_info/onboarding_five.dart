@@ -204,7 +204,7 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
                       hintText: AppLocalizations.of(context).translate('phone'),
                       labelText:
                           AppLocalizations.of(context).translate('phone')),
-                  initialCountryCode: 'MX',
+                  initialCountryCode: 'CA',
                   onChanged: (val) {
                     if (val.number.length == 10) {
                       FocusScope.of(context).unfocus();
