@@ -231,7 +231,19 @@ class ProfileDetails extends StatelessWidget {
               ),
               PortfolioWidget(
                 title: 'Cufflink.io',
-                links: [Link('Website', 'https://cufflink.io')],
+                links: [
+                  Link('Website', 'https://cufflink.io'),
+                ],
+              ),
+              PortfolioWidget(
+                title: 'Sport12',
+                links: [
+                  Link('Website', 'https://sport-12.com'),
+                  Link('iOS',
+                      'https://apps.apple.com/us/app/sport12/id1441021234'),
+                  Link('Android',
+                      'https://play.google.com/store/apps/details?id=com.sport12'),
+                ],
               ),
               PortfolioWidget(
                 title: 'Mamá Gallina Sitters',
