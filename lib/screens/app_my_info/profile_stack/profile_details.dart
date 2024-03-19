@@ -246,6 +246,12 @@ class ProfileDetails extends StatelessWidget {
                 ],
               ),
               PortfolioWidget(
+                title: 'Tripular',
+                links: [
+                  Link('Demo Website', 'https://tripular-dev-79346.web.app/'),
+                ],
+              ),
+              PortfolioWidget(
                 title: 'Mamá Gallina Sitters',
                 links: [
                   Link('Website', 'https://mamagallinasitters.com'),
