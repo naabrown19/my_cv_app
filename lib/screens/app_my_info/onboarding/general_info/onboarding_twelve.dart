@@ -5,17 +5,30 @@ import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/my_info/docs_container.dart';
 
-class NannyOnboardingTwelveScreen extends StatelessWidget {
+class NannyOnboardingTwelveScreen extends StatefulWidget {
   final MyInfo nanny;
   final Function nextPage;
   NannyOnboardingTwelveScreen(this.nanny, this.nextPage);
 
   @override
+  State<NannyOnboardingTwelveScreen> createState() =>
+      _NannyOnboardingTwelveScreenState();
+}
+
+class _NannyOnboardingTwelveScreenState
+    extends State<NannyOnboardingTwelveScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 3)).then((value) {
+      widget.nextPage();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final docs = dummyDocs;
-    Future.delayed(Duration(seconds: 3)).then((value) {
-      nextPage();
-    });
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: SingleChildScrollView(

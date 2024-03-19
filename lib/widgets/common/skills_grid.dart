@@ -58,9 +58,7 @@ class _SkillsGridState extends State<SkillsGrid> {
 
   void selectSkill(Skill s) {
     setState(() {
-      if (select == null) {
-        select = [s.id];
-      } else if (!select.contains(s)) {
+      if (!select.contains(s)) {
         select.add(s.id);
       } else {
         select.remove(s.id);
@@ -86,11 +84,7 @@ class _SkillsGridState extends State<SkillsGrid> {
                     onTap: () {},
                     child: QuestionButton(
                       labelKey: e.skill,
-                      isSelected: select == null
-                          ? false
-                          : select.contains(e.id)
-                              ? true
-                              : false,
+                      isSelected: select.contains(e.id) ? true : false,
                     ),
                   ))
               .toList()

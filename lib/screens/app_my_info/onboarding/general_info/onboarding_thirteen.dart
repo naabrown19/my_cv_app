@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/theme.dart';
+import 'package:my_cv_app/screens/app_my_info/home_page_view.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/onboarding/onboarding_title.dart';
+import 'package:page_transition/page_transition.dart';
 
 class NannyOnboardingThirteenScreen extends StatefulWidget {
   final Function nextPage;
@@ -17,7 +19,12 @@ class _NannyOnboardingThirteenScreenState
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 4)).then((value) {
-      widget.nextPage();
+      Navigator.pushReplacement(
+          context,
+          PageTransition(
+              child: NannyHomePageView(),
+              type: PageTransitionType.fade,
+              duration: Duration(milliseconds: 300)));
     });
   }
 
