@@ -12,7 +12,7 @@ class QuestionButton extends StatelessWidget {
   final double? fontSize;
   QuestionButton({
     this.labelKey,
-    this.isSelected = false,
+    required this.isSelected,
     this.onPressed,
     this.color,
     this.width,
@@ -28,11 +28,7 @@ class QuestionButton extends StatelessWidget {
         width: width != null ? width : MediaQuery.of(context).size.width * 0.4,
         height: 40,
         decoration: BoxDecoration(
-            color: isSelected
-                ? color != null
-                    ? color
-                    : ThemeColors.PRIMARY
-                : Colors.white,
+            color: isSelected ? ThemeColors.PRIMARY : Colors.white,
             border: Border.all(color: ThemeColors.PRIMARY, width: 2),
             borderRadius: BorderRadius.circular(20)),
         child: FittedBox(
@@ -42,11 +38,7 @@ class QuestionButton extends StatelessWidget {
                 : labelKey ?? '',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: isSelected
-                  ? color != null
-                      ? color
-                      : Colors.white
-                  : ThemeColors.PRIMARY,
+              color: isSelected ? Colors.white : ThemeColors.PRIMARY,
             ),
           ),
         ));

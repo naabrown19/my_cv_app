@@ -108,7 +108,7 @@ class _MainSectionPageViewState extends State<MainSectionPageView> {
         Container(
           height: kIsWeb
               ? _selectedPageIndex == 0
-                  ? 1572
+                  ? 2800
                   : 300
               : _selectedPageIndex == 0
                   ? 1422

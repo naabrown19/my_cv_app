@@ -9,8 +9,8 @@ import 'package:my_cv_app/screens/login/select_account_screen.dart';
 import 'package:my_cv_app/services/config_reader.dart';
 import 'package:provider/provider.dart';
 
-import 'services/app_localizations.dart';
 import 'const/theme.dart';
+import 'services/app_localizations.dart';
 
 Future<void> main() async {
   setupLocator();
@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'About Neil',
         theme: ThemeData(
+            useMaterial3: false,
             backgroundColor: ThemeColors.BACKGROUND,
             primaryColor: ThemeColors.PRIMARY,
             visualDensity: VisualDensity.adaptivePlatformDensity,
