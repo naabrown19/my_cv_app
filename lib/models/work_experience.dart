@@ -5,10 +5,11 @@ class WorkExperience {
   DateTime startDate;
   DateTime endDate;
 
-  WorkExperience(
-      {this.jobTitle,
-      this.companyName,
-      this.endDate,
-      this.responsibilities,
-      this.startDate});
+  WorkExperience({
+    required this.jobTitle,
+    required this.companyName,
+    required this.endDate,
+    required this.responsibilities,
+    required this.startDate,
+  });
 }

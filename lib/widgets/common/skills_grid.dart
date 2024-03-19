@@ -8,12 +8,12 @@ class SkillsGrid extends StatefulWidget {
   final bool editMode;
   final List<Skill> allSkills;
   final MyInfo nanny;
-  final Function nextPage;
+  final Function()? nextPage;
   final bool start;
   SkillsGrid(
-      {this.allSkills,
-      this.nanny,
-      this.editMode,
+      {this.allSkills = const [],
+      required this.nanny,
+      this.editMode = false,
       this.nextPage,
       this.start = false});
 
@@ -25,7 +25,7 @@ class _SkillsGridState extends State<SkillsGrid> {
   List<String> select = [];
   int _skillStep = 0;
 
-  ScrollController _scrollController;
+  late final ScrollController _scrollController;
 
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _SkillsGridState extends State<SkillsGrid> {
       });
     } else {
       Future.delayed(Duration(seconds: 1)).then((value) {
-        widget.nextPage();
+        widget.nextPage?.call();
       });
     }
   }

@@ -10,7 +10,7 @@ class LanguageSelector extends StatefulWidget {
 }
 
 class _LanguageSelectorState extends State<LanguageSelector> {
-  String dropdownValue;
+  String? dropdownValue;
   bool _isInit = true;
   @override
   void didChangeDependencies() {
@@ -30,15 +30,17 @@ class _LanguageSelectorState extends State<LanguageSelector> {
         value: dropdownValue,
         style: TextStyle(
             color: ThemeColors.PRIMARY_TEXT, fontSize: ThemeSizes.PARAGRAPH),
-        onChanged: (String newValue) async {
+        onChanged: (String? newValue) async {
+          if (newValue != null) {
+            AppLocalizationsDelegate(overriddenLocale: Locale(newValue));
+            setState(() {
+              AppLocalizations.of(context).load(lang: newValue);
+              dropdownValue = newValue;
+              Provider.of<MyInfoProvider>(context, listen: false)
+                  .setCurrentLang(dropdownValue!);
+            });
+          }
           print('loading langs');
-          AppLocalizationsDelegate(overriddenLocale: Locale(newValue));
-          setState(() {
-            AppLocalizations.of(context).load(lang: newValue);
-            dropdownValue = newValue;
-            Provider.of<MyInfoProvider>(context, listen: false)
-                .setCurrentLang(dropdownValue);
-          });
         },
         items: <String>[
           'EN',

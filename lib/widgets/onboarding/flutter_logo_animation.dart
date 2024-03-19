@@ -7,8 +7,8 @@ class AnimatedFlutterLogo extends StatefulWidget {
 
 class _AnimatedFlutterLogoState extends State<AnimatedFlutterLogo>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<double> _animation;
+  late final AnimationController _animationController;
+  late final Animation<double> _animation;
 
   @override
   void initState() {

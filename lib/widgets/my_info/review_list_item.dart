@@ -37,7 +37,7 @@ class ReviewListItem extends StatelessWidget {
                   Row(
                     children: [
                       RatingBar(
-                        onRatingUpdate: null,
+                        onRatingUpdate: (value) {},
                         allowHalfRating: false,
                         ratingWidget: RatingWidget(
                             full: Icon(

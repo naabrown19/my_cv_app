@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isLoadingFB = false;
   bool _isLoadingG = false;
   bool _isLoadingA = false;
-  String _lang;
+  String? _lang;
   @override
   void initState() {
     super.initState();
@@ -128,7 +128,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            AppLocalizations.of(context).translate('welcome'),
+                            AppLocalizations.of(context).translate('welcome') ??
+                                '',
                             style: TextStyle(
                               fontSize: ThemeSizes.HEADING,
                               color: ThemeColors.PRIMARY,
@@ -180,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     validator: (val) {
                                       if (!RegExp(
                                               r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-                                          .hasMatch(val)) {
+                                          .hasMatch(val ?? '')) {
                                         return 'This is not a valid email';
                                       }
                                       return null;
@@ -255,7 +256,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           InkWell(
                             onTap: () {},
                             child: Text(AppLocalizations.of(context)
-                                .translate('forgot_password')),
+                                    .translate('forgot_password') ??
+                                ''),
                           ),
                           SizedBox(
                             height: !_isLogin ? 10 : 40,
@@ -272,7 +274,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                               child: Text(
                                 AppLocalizations.of(context)
-                                    .translate('login_terms'),
+                                        .translate('login_terms') ??
+                                    '',
                                 style: TextStyle(color: ThemeColors.GRAY_TEXT),
                                 textAlign: TextAlign.center,
                               ),
@@ -288,9 +291,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             },
                             child: Text(_isLogin
                                 ? AppLocalizations.of(context)
-                                    .translate('no_account')
+                                        .translate('no_account') ??
+                                    ''
                                 : AppLocalizations.of(context)
-                                    .translate('has_account')),
+                                        .translate('has_account') ??
+                                    ''),
                           )
                         ],
                       ),

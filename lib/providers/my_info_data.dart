@@ -68,7 +68,7 @@ class MyInfoProvider extends ChangeNotifier {
             skillEs: 'Arte y Manualidades')
       ],
       email: 'naabrown19@gmail.com',
-      experiences: {'flutter': '3', 'firebase': '3', 'node': '3'},
+      experiences: {'flutter': '6', 'firebase': '6', 'node': '5'},
       lastName: 'Brown',
       firstName: 'Neil',
       nativeLanguageId: '1ae',
@@ -91,7 +91,7 @@ class MyInfoProvider extends ChangeNotifier {
       ],
       workExperience: [
         WorkExperience(
-            jobTitle: 'Software Developer',
+            jobTitle: 'Flutter Team Lead',
             companyName: 'mmhg.ca',
             startDate: DateTime(2022, 04, 01),
             endDate: DateTime.now(),
@@ -134,7 +134,7 @@ class MyInfoProvider extends ChangeNotifier {
             responsibilities: []),
       ]);
 
-  String _currentLang;
+  String? _currentLang;
 
   MyInfo get myInfo {
     return _myInfo;

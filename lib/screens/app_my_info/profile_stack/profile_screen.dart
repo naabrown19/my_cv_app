@@ -53,7 +53,9 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 12),
               MainSectionPageView(),
               ContinueButton(
-                text: AppLocalizations.of(context).translate('return_to_start'),
+                text:
+                    AppLocalizations.of(context).translate('return_to_start') ??
+                        '',
                 buttonColor: ThemeColors.PRIMARY.withOpacity(0.2),
                 textColor: ThemeColors.PRIMARY,
                 textWeight: FontWeight.bold,
@@ -67,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
                 },
               ),
               ContinueButton(
-                text: AppLocalizations.of(context).translate('logout'),
+                text: AppLocalizations.of(context).translate('logout') ?? '',
                 buttonColor: ThemeColors.RED.withOpacity(0.2),
                 textColor: ThemeColors.RED,
                 textWeight: FontWeight.bold,

@@ -6,7 +6,7 @@ import 'package:my_cv_app/widgets/common/language_selector.dart';
 PreferredSizeWidget myAppBar(String titleKey, BuildContext context) {
   return AppBar(
     title: Text(
-      AppLocalizations.of(context).translate(titleKey),
+      AppLocalizations.of(context).translate(titleKey) ?? '',
       style: TextStyle(
           fontSize: ThemeSizes.SUBTITLE,
           fontWeight: FontWeight.bold,

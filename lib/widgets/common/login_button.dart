@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
+
 import '../../const/theme.dart';
 
 class LoginButton extends StatelessWidget {
-  final String text;
-  final Function onPressed;
+  final String? text;
+  final Function()? onPressed;
   final bool isLoading;
-  final Image icon;
+  final Image? icon;
   LoginButton({this.text, this.onPressed, this.isLoading = false, this.icon});
 
   @override
   Widget build(BuildContext context) {
-    bool _isLogin=text == 'login'||text=='sign_up';
+    bool _isLogin = text == 'login' || text == 'sign_up';
     return InkWell(
       onTap: isLoading ? () {} : onPressed,
       child: Container(
@@ -40,12 +41,12 @@ class LoginButton extends StatelessWidget {
                     ),
                   if (icon != null) const SizedBox(width: 10),
                   Text(
-                    AppLocalizations.of(context).translate(text)??text,
+                    text != null
+                        ? AppLocalizations.of(context).translate(text!) ?? ''
+                        : (text ?? ''),
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: _isLogin
-                          ? Colors.white
-                          : ThemeColors.PRIMARY_TEXT,
+                      color: _isLogin ? Colors.white : ThemeColors.PRIMARY_TEXT,
                       fontSize: ThemeSizes.SUBTITLE,
                     ),
                   ),

@@ -6,17 +6,17 @@ import '../../const/theme.dart';
 
 class ContinueButton extends StatelessWidget {
   final String text;
-  final Function onPressed;
-  final double width;
-  final double height;
-  final Color buttonColor;
-  final Color textColor;
+  final Function()? onPressed;
+  final double? width;
+  final double? height;
+  final Color? buttonColor;
+  final Color? textColor;
   final bool isLoading;
-  final Border border;
-  final FontWeight textWeight;
+  final Border? border;
+  final FontWeight? textWeight;
 
   ContinueButton(
-      {this.text,
+      {required this.text,
       this.buttonColor,
       this.textColor,
       this.textWeight,

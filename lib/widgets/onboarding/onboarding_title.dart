@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
+
 import '../../const/theme.dart';
 
 class OnboardingTitle extends StatelessWidget {
@@ -8,7 +9,7 @@ class OnboardingTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      AppLocalizations.of(context).translate(titleKey),
+      AppLocalizations.of(context).translate(titleKey) ?? '',
       style: TextStyle(
         color: ThemeColors.PRIMARY,
         fontSize: ThemeSizes.TITLE,

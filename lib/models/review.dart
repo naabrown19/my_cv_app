@@ -3,13 +3,13 @@ class Review {
   final double score;
   final String comments;
   final String reviewerName;
-  final DateTime reviewDate;
+  final DateTime? reviewDate;
 
   const Review({
-    this.id,
-    this.score,
-    this.comments,
-    this.reviewerName,
+    required this.id,
+    required this.score,
+    required this.comments,
+    required this.reviewerName,
     this.reviewDate,
   });
 }

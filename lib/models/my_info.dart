@@ -9,23 +9,23 @@ class MyInfo {
   String id;
   String firstName;
   String lastName;
-  String secondLastName;
+  String? secondLastName;
   String email;
   bool approved;
-  DateTime dateOfBirth;
-  DateTime createDate;
-  DateTime lastLogin;
-  String profileImageUrl;
-  String locale;
-  String language;
+  DateTime? dateOfBirth;
+  DateTime? createDate;
+  DateTime? lastLogin;
+  String? profileImageUrl;
+  String? locale;
+  String? language;
   String phoneNo;
   String phoneIso;
-  Address address;
+  Address? address;
   String description;
   List<Skill> selectedSkills = [];
   Map<String, String> experiences = {};
   String nativeLanguageId;
-  Map<String, String> otherLanguages = {};
+  Map<String, String>? otherLanguages;
   List<WorkExperience> workExperience = [];
   List<Document> documents = [];
   Map<String, List<String>> answers = {};
@@ -37,10 +37,10 @@ class MyInfo {
   List<Education> education = [];
 
   MyInfo({
-    this.id,
-    this.email,
-    this.firstName,
-    this.lastName,
+    required this.id,
+    required this.email,
+    required this.firstName,
+    required this.lastName,
     this.secondLastName,
     this.dateOfBirth,
     this.approved = false,
@@ -49,22 +49,22 @@ class MyInfo {
     this.profileImageUrl,
     this.locale,
     this.address,
-    this.answers,
-    this.description,
-    this.documents,
-    this.workExperience,
-    this.experiences,
+    this.answers = const {},
+    required this.description,
+    required this.documents,
+    required this.workExperience,
+    required this.experiences,
     this.language,
-    this.nativeLanguageId,
+    required this.nativeLanguageId,
     this.otherLanguages,
-    this.phoneNo,
-    this.phoneIso,
-    this.selectedSkills,
-    this.specialCares,
+    required this.phoneNo,
+    required this.phoneIso,
+    required this.selectedSkills,
+    this.specialCares = const [],
     this.serviceCount = 0,
     this.percentProfileComplete = 0.0,
     this.averageReviewRating = 5,
-    this.reviews,
-    this.education,
+    required this.reviews,
+    required this.education,
   });
 }

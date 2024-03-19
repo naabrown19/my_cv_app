@@ -12,7 +12,7 @@ class MainSectionPageView extends StatefulWidget {
 
 class _MainSectionPageViewState extends State<MainSectionPageView> {
   final PageController _profileController = PageController(initialPage: 0);
-  int _selectedPageIndex;
+  late int _selectedPageIndex;
 
   @override
   void initState() {
@@ -60,7 +60,7 @@ class _MainSectionPageViewState extends State<MainSectionPageView> {
                         borderRadius:
                             BorderRadius.circular(ThemeSizes.BORDER_RADIUS)),
                     child: Text(
-                      AppLocalizations.of(context).translate('about_me'),
+                      AppLocalizations.of(context).translate('about_me') ?? '',
                       style: TextStyle(
                           color: _selectedPageIndex == 0
                               ? Colors.white
@@ -90,7 +90,7 @@ class _MainSectionPageViewState extends State<MainSectionPageView> {
                         borderRadius:
                             BorderRadius.circular(ThemeSizes.BORDER_RADIUS)),
                     child: Text(
-                      AppLocalizations.of(context).translate('reviews'),
+                      AppLocalizations.of(context).translate('reviews') ?? '',
                       style: TextStyle(
                           color: _selectedPageIndex == 1
                               ? Colors.white

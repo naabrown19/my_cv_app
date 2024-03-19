@@ -30,10 +30,10 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
   final PageController _pageController = PageController(initialPage: 0);
   final int _numPages = 6;
   bool _isLoading = false;
-  MyInfo _myInfo;
+  late MyInfo _myInfo;
   bool _isInit = true;
-  String _lang;
-  ScrollController _scrollController;
+  late String _lang;
+  late final ScrollController _scrollController;
 
   @override
   void initState() {
@@ -160,7 +160,8 @@ class _NannyGeneralInfoPageViewState extends State<NannyGeneralInfoPageView> {
                                 _currentPage == 0 || _currentPage == _numPages
                                     ? ''
                                     : AppLocalizations.of(context)
-                                        .translate('back'),
+                                            .translate('back') ??
+                                        '',
                                 style: TextStyle(
                                     color: ThemeColors.GRAY_TEXT,
                                     fontWeight: FontWeight.bold),

@@ -11,16 +11,20 @@ import 'package:my_cv_app/widgets/common/skills_grid.dart';
 import 'package:provider/provider.dart';
 
 class ProfileDetails extends StatelessWidget {
+  ProfileDetails(
+    this.isNanny, {
+    this.nannyId,
+  });
+
   final bool isNanny;
-  final String nannyId;
-  ProfileDetails(this.isNanny, {this.nannyId});
+  final String? nannyId;
 
   final f = DateFormat("MMM-yy");
 
   @override
   Widget build(BuildContext context) {
     MyInfo _myInfo;
-    Language _nativeLang;
+    Language? _nativeLang;
     Map<Language, String> _languages = {};
 
     List<Language> _savedLanguages;
@@ -28,12 +32,11 @@ class ProfileDetails extends StatelessWidget {
     _myInfo = Provider.of<MyInfoProvider>(context).myInfo;
     _savedLanguages = DUMMY_LANGUAGES;
 
-    if (_savedLanguages != null && _savedLanguages.length > 0) {
+    if (_savedLanguages.length > 0) {
       _nativeLang = _savedLanguages
-              .where((lan) => lan.id == _myInfo.nativeLanguageId)
-              ?.first ??
-          '';
-      _myInfo.otherLanguages.forEach((key, value) {
+          .where((lan) => lan.id == _myInfo.nativeLanguageId)
+          .firstOrNull;
+      _myInfo.otherLanguages?.forEach((key, value) {
         _languages[_savedLanguages.where((lan) => lan.id == key).first] = value;
       });
     }
@@ -63,8 +66,9 @@ class ProfileDetails extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context)
-                    .translate('experience')
-                    .toUpperCase(),
+                        .translate('experience')
+                        ?.toUpperCase() ??
+                    '',
                 style: TextStyle(
                     color: ThemeColors.GRAY_TEXT,
                     fontSize: ThemeSizes.PARAGRAPH,
@@ -73,92 +77,93 @@ class ProfileDetails extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          if (_myInfo.experiences != null)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                if (_myInfo.experiences.containsKey('flutter') &&
-                    int.parse(_myInfo.experiences['flutter']) > 0)
-                  Column(
-                    children: [
-                      Container(height: 60, width: 60, child: FlutterLogo()),
-                      const SizedBox(height: 5),
-                      Text(
-                        'Flutter',
-                        style: TextStyle(
-                            color: ThemeColors.PRIMARY_TEXT,
-                            fontSize: ThemeSizes.PARAGRAPH,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        '${_myInfo.experiences['flutter']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
-                        style: TextStyle(
-                            color: ThemeColors.DARK_GRAY,
-                            fontSize: ThemeSizes.CAPTION),
-                      )
-                    ],
-                  ),
-                if (_myInfo.experiences.containsKey('firebase') &&
-                    int.parse(_myInfo.experiences['firebase']) > 0)
-                  Column(
-                    children: [
-                      Image.asset(
-                        'assets/images/firebase_logo.png',
-                        height: 60,
-                        width: 60,
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        'Firebase',
-                        style: TextStyle(
-                            color: ThemeColors.PRIMARY_TEXT,
-                            fontSize: ThemeSizes.PARAGRAPH,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        '${_myInfo.experiences['firebase']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
-                        style: TextStyle(
-                            color: ThemeColors.DARK_GRAY,
-                            fontSize: ThemeSizes.CAPTION),
-                      )
-                    ],
-                  ),
-                if (_myInfo.experiences.containsKey('node') &&
-                    int.parse(_myInfo.experiences['node']) > 0)
-                  Column(
-                    children: [
-                      Image.asset(
-                        'assets/images/node_logo.png',
-                        height: 60,
-                        width: 60,
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        'Node.JS',
-                        style: TextStyle(
-                            color: ThemeColors.PRIMARY_TEXT,
-                            fontSize: ThemeSizes.PARAGRAPH,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        '${_myInfo.experiences['node']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
-                        style: TextStyle(
-                            color: ThemeColors.GRAY_TEXT,
-                            fontSize: ThemeSizes.CAPTION),
-                      )
-                    ],
-                  ),
-              ],
-            ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (_myInfo.experiences.containsKey('flutter') &&
+                  (int.tryParse((_myInfo.experiences['flutter'] ?? '6')) ?? 6) >
+                      0)
+                Column(
+                  children: [
+                    Container(height: 60, width: 60, child: FlutterLogo()),
+                    const SizedBox(height: 5),
+                    Text(
+                      'Flutter',
+                      style: TextStyle(
+                          color: ThemeColors.PRIMARY_TEXT,
+                          fontSize: ThemeSizes.PARAGRAPH,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${_myInfo.experiences['flutter']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
+                      style: TextStyle(
+                          color: ThemeColors.DARK_GRAY,
+                          fontSize: ThemeSizes.CAPTION),
+                    )
+                  ],
+                ),
+              if (_myInfo.experiences.containsKey('firebase') &&
+                  int.parse((_myInfo.experiences['firebase'] ?? '6')) > 0)
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/firebase_logo.png',
+                      height: 60,
+                      width: 60,
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      'Firebase',
+                      style: TextStyle(
+                          color: ThemeColors.PRIMARY_TEXT,
+                          fontSize: ThemeSizes.PARAGRAPH,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${_myInfo.experiences['firebase']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
+                      style: TextStyle(
+                          color: ThemeColors.DARK_GRAY,
+                          fontSize: ThemeSizes.CAPTION),
+                    )
+                  ],
+                ),
+              if (_myInfo.experiences.containsKey('node') &&
+                  int.parse((_myInfo.experiences['node'] ?? '5')) > 0)
+                Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/node_logo.png',
+                      height: 60,
+                      width: 60,
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      'Node.JS',
+                      style: TextStyle(
+                          color: ThemeColors.PRIMARY_TEXT,
+                          fontSize: ThemeSizes.PARAGRAPH,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${_myInfo.experiences['node']} ${AppLocalizations.of(context).translate('nanny_ob_seven_years')}',
+                      style: TextStyle(
+                          color: ThemeColors.GRAY_TEXT,
+                          fontSize: ThemeSizes.CAPTION),
+                    )
+                  ],
+                ),
+            ],
+          ),
           const SizedBox(height: 20),
           //education section
           Container(
             width: double.infinity,
             child: Text(
-              AppLocalizations.of(context).translate('work_experience'),
+              AppLocalizations.of(context).translate('work_experience') ?? '',
               style: TextStyle(
                   color: ThemeColors.GRAY_TEXT,
                   fontSize: ThemeSizes.PARAGRAPH,
@@ -167,7 +172,7 @@ class ProfileDetails extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 10),
-          _myInfo.workExperience == null || _myInfo.workExperience.length == 0
+          _myInfo.workExperience.length == 0
               ? Text('')
               : ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
@@ -201,8 +206,9 @@ class ProfileDetails extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context)
-                    .translate('portfolio')
-                    .toUpperCase(),
+                        .translate('portfolio')
+                        ?.toUpperCase() ??
+                    '',
                 style: TextStyle(
                     color: ThemeColors.GRAY_TEXT,
                     fontSize: ThemeSizes.PARAGRAPH,
@@ -255,7 +261,10 @@ class ProfileDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                AppLocalizations.of(context).translate('skills').toUpperCase(),
+                AppLocalizations.of(context)
+                        .translate('skills')
+                        ?.toUpperCase() ??
+                    '',
                 style: TextStyle(
                     color: ThemeColors.GRAY_TEXT,
                     fontSize: ThemeSizes.PARAGRAPH,
@@ -265,9 +274,7 @@ class ProfileDetails extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           //get skills
-          _myInfo.selectedSkills == null
-              ? Text(AppLocalizations.of(context).translate('no_skills'))
-              : SkillsGrid(nanny: _myInfo, editMode: false),
+          SkillsGrid(nanny: _myInfo, editMode: false),
           const SizedBox(height: 20),
 
           Row(
@@ -275,8 +282,9 @@ class ProfileDetails extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context)
-                    .translate('education')
-                    .toUpperCase(),
+                        .translate('education')
+                        ?.toUpperCase() ??
+                    '',
                 style: TextStyle(
                     color: ThemeColors.GRAY_TEXT,
                     fontSize: ThemeSizes.PARAGRAPH,
@@ -285,9 +293,9 @@ class ProfileDetails extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 10),
-          _myInfo.education == null || _myInfo.education.length == 0
+          _myInfo.education.length == 0
               ? Text(
-                  AppLocalizations.of(context).translate('no_education'),
+                  AppLocalizations.of(context).translate('no_education') ?? '',
                   textAlign: TextAlign.center,
                 )
               : ListView.builder(
@@ -322,8 +330,9 @@ class ProfileDetails extends StatelessWidget {
             children: [
               Text(
                 AppLocalizations.of(context)
-                    .translate('languages')
-                    .toUpperCase(),
+                        .translate('languages')
+                        ?.toUpperCase() ??
+                    '',
                 style: TextStyle(
                     color: ThemeColors.GRAY_TEXT,
                     fontSize: ThemeSizes.PARAGRAPH,
@@ -350,7 +359,8 @@ class ProfileDetails extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(AppLocalizations.of(context)
-                        .translate(_languages.values.elementAt(index)))
+                            .translate(_languages.values.elementAt(index)) ??
+                        '')
                   ],
                 ),
               ),

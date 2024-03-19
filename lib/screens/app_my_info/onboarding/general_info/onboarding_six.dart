@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:my_cv_app/const/dummy_data.dart';
 import 'package:my_cv_app/const/theme.dart';
@@ -6,11 +7,9 @@ import 'package:my_cv_app/models/skill.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 import 'package:my_cv_app/widgets/common/skills_grid.dart';
 
-import 'package:flutter/foundation.dart' show kIsWeb;
-
 class NannyOnboardingSixScreen extends StatefulWidget {
   final MyInfo nanny;
-  final Function nextPage;
+  final Function() nextPage;
   NannyOnboardingSixScreen(this.nanny, this.nextPage);
   @override
   _NannyOnboardingSixScreenState createState() =>
@@ -23,7 +22,7 @@ class _NannyOnboardingSixScreenState extends State<NannyOnboardingSixScreen> {
   List<Skill> _skills = DUMMY_SKILLS;
   bool _startSelecting = false;
 
-  String _description;
+  String? _description;
   int _descriptionStep = 0;
 
   @override
@@ -34,7 +33,8 @@ class _NannyOnboardingSixScreenState extends State<NannyOnboardingSixScreen> {
   void _startInput() {
     if (_descController.text != _description) {
       setState(() {
-        _descController.text = _description.substring(0, _descriptionStep);
+        _descController.text =
+            _description?.substring(0, _descriptionStep) ?? '';
       });
       _descriptionStep += 1;
       Future.delayed(Duration(milliseconds: 70)).then((value) {
@@ -70,7 +70,8 @@ class _NannyOnboardingSixScreenState extends State<NannyOnboardingSixScreen> {
             Container(
               width: double.infinity,
               child: Text(
-                AppLocalizations.of(context).translate('nanny_ob_six_title'),
+                AppLocalizations.of(context).translate('nanny_ob_six_title') ??
+                    '',
                 style: TextStyle(
                     color: ThemeColors.SECONDARY,
                     fontSize: ThemeSizes.TITLE,
@@ -81,7 +82,9 @@ class _NannyOnboardingSixScreenState extends State<NannyOnboardingSixScreen> {
             Container(
               width: double.infinity,
               child: Text(
-                AppLocalizations.of(context).translate('nanny_ob_six_subtitle'),
+                AppLocalizations.of(context)
+                        .translate('nanny_ob_six_subtitle') ??
+                    '',
                 style: TextStyle(
                   color: ThemeColors.GRAY_TEXT,
                   fontSize: ThemeSizes.SUBTITLE,
@@ -118,7 +121,8 @@ class _NannyOnboardingSixScreenState extends State<NannyOnboardingSixScreen> {
             const SizedBox(height: 20),
             Text(
               AppLocalizations.of(context)
-                  .translate('nanny_ob_six_select_skills'),
+                      .translate('nanny_ob_six_select_skills') ??
+                  '',
               style: TextStyle(
                   color: ThemeColors.DARK_GRAY, fontSize: ThemeSizes.PARAGRAPH),
             ),

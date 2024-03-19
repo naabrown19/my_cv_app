@@ -27,7 +27,8 @@ class NannyOnboardingTwelveScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Text(
                   AppLocalizations.of(context)
-                      .translate('nanny_ob_twelve_title'),
+                          .translate('nanny_ob_twelve_title') ??
+                      '',
                   style: TextStyle(
                       color: ThemeColors.SECONDARY,
                       fontSize: ThemeSizes.TITLE,
@@ -39,7 +40,8 @@ class NannyOnboardingTwelveScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Text(
                   AppLocalizations.of(context)
-                      .translate('nanny_ob_twelve_subtitle'),
+                          .translate('nanny_ob_twelve_subtitle') ??
+                      '',
                   style: TextStyle(
                     color: ThemeColors.GRAY_TEXT,
                     fontSize: ThemeSizes.SUBTITLE,

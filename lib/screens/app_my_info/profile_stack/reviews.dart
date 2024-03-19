@@ -6,9 +6,13 @@ import 'package:my_cv_app/widgets/my_info/review_list_item.dart';
 import 'package:provider/provider.dart';
 
 class ReviewList extends StatelessWidget {
+  ReviewList({
+    required this.isNanny,
+    this.nannyId,
+  });
+
   final bool isNanny;
-  final String nannyId;
-  ReviewList({this.isNanny, this.nannyId});
+  final String? nannyId;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +20,7 @@ class ReviewList extends StatelessWidget {
 
     _myInfo = Provider.of<MyInfoProvider>(context, listen: false).myInfo;
 
-    return _myInfo.reviews != null && _myInfo.reviews.length > 0
+    return _myInfo.reviews.length > 0
         ? Container(
             width: double.infinity,
             child: ListView.builder(
@@ -28,7 +32,7 @@ class ReviewList extends StatelessWidget {
             ),
           )
         : Text(
-            AppLocalizations.of(context).translate('no_reviews'),
+            AppLocalizations.of(context).translate('no_reviews') ?? '',
             textAlign: TextAlign.center,
           );
   }

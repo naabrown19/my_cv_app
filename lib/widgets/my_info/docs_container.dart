@@ -17,17 +17,17 @@ class _DocsContainerState extends State<DocsContainer> {
   @override
   void initState() {
     super.initState();
-    if(widget.doc.docTitle=='cv'){
+    if (widget.doc.docTitle == 'cv') {
       Future.delayed(Duration(seconds: 1)).then((value) {
         setState(() {
-          widget.doc.status='submitted';
+          widget.doc.status = 'submitted';
         });
       });
     }
   }
 
-  Color _getStatusColor() {
-    Color color;
+  Color? _getStatusColor() {
+    Color? color;
     switch (widget.doc.status) {
       case 'to submit':
         return color = ThemeColors.DARK_GRAY;
@@ -41,8 +41,8 @@ class _DocsContainerState extends State<DocsContainer> {
     return color;
   }
 
-  Widget _statusIconBuilder(BuildContext context, Document document) {
-    Widget widget;
+  Widget? _statusIconBuilder(BuildContext context, Document document) {
+    Widget? widget;
     if (_isLoading) {
       return CircularProgressIndicator();
     }
@@ -72,15 +72,15 @@ class _DocsContainerState extends State<DocsContainer> {
     return widget;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: _getStatusColor(), width: 2),
-            color: _getStatusColor().withOpacity(0.1),
+            border:
+                Border.all(color: _getStatusColor() ?? Colors.white, width: 2),
+            color: _getStatusColor()?.withOpacity(0.1),
             borderRadius: BorderRadius.circular(ThemeSizes.BORDER_RADIUS)),
         width: double.infinity,
         margin: EdgeInsets.symmetric(vertical: ThemeSizes.MARGIN / 2),
@@ -103,14 +103,17 @@ class _DocsContainerState extends State<DocsContainer> {
                   children: [
                     Text(
                         AppLocalizations.of(context)
-                            .translate(widget.doc.docTitle),
+                                .translate(widget.doc.docTitle) ??
+                            '',
                         style: TextStyle(
                           color: ThemeColors.PRIMARY_DARK,
                           fontSize: ThemeSizes.SUBTITLE,
                           fontWeight: FontWeight.bold,
                         )),
                     Text(
-                      AppLocalizations.of(context).translate(widget.doc.status),
+                      AppLocalizations.of(context)
+                              .translate(widget.doc.status) ??
+                          '',
                       style: TextStyle(color: _getStatusColor(), fontSize: 12),
                       textAlign: TextAlign.start,
                     ),
@@ -118,7 +121,8 @@ class _DocsContainerState extends State<DocsContainer> {
                       Text(
                         AppLocalizations.of(context)
                                 .translate('rejection_note') ??
-                            widget.doc.rejectionReason,
+                            widget.doc.rejectionReason ??
+                            '',
                         style: TextStyle(
                             fontSize: ThemeSizes.CAPTION, color: Colors.red),
                       ),
@@ -126,7 +130,8 @@ class _DocsContainerState extends State<DocsContainer> {
                       Text(
                         AppLocalizations.of(context)
                                 .translate(widget.doc.docTitle) ??
-                            widget.doc.docSubtitle,
+                            widget.doc.docSubtitle ??
+                            '',
                         style: TextStyle(
                             fontSize: ThemeSizes.CAPTION,
                             color: ThemeColors.GRAY_TEXT),
@@ -134,8 +139,9 @@ class _DocsContainerState extends State<DocsContainer> {
                     if (widget.doc.rejectionReason != null)
                       Text(
                         AppLocalizations.of(context)
-                                .translate(widget.doc.rejectionReason) ??
-                            widget.doc.rejectionReason,
+                                .translate(widget.doc.rejectionReason ?? '') ??
+                            widget.doc.rejectionReason ??
+                            '',
                         style: TextStyle(
                             fontSize: ThemeSizes.CAPTION, color: Colors.red),
                       ),
@@ -143,7 +149,7 @@ class _DocsContainerState extends State<DocsContainer> {
                 )
               ],
             ),
-            _statusIconBuilder(context, widget.doc)
+            _statusIconBuilder(context, widget.doc) ?? Container(),
           ],
         ),
       ),

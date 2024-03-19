@@ -4,9 +4,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PortfolioWidget extends StatelessWidget {
   PortfolioWidget({
-    Key key,
-    this.title,
-    this.links,
+    Key? key,
+    required this.title,
+    required this.links,
   }) : super(key: key);
 
   final String title;

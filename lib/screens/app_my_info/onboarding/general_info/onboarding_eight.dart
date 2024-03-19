@@ -21,7 +21,7 @@ class _NannyOnboardingEightScreenState
   bool _isInit = true;
   List<Language> _languages = [];
   List<Language> _filteredLanguages = [];
-  Language dropdownValue;
+  late Language dropdownValue;
 
   Map<String, String> map = {};
 
@@ -66,7 +66,8 @@ class _NannyOnboardingEightScreenState
                 width: double.infinity,
                 child: Text(
                   AppLocalizations.of(context)
-                      .translate('nanny_ob_eight_title'),
+                          .translate('nanny_ob_eight_title') ??
+                      '',
                   style: TextStyle(
                       color: ThemeColors.SECONDARY,
                       fontSize: ThemeSizes.TITLE,
@@ -78,7 +79,8 @@ class _NannyOnboardingEightScreenState
                 width: double.infinity,
                 child: Text(
                   AppLocalizations.of(context)
-                      .translate('nanny_ob_eight_subtitle'),
+                          .translate('nanny_ob_eight_subtitle') ??
+                      '',
                   style: TextStyle(
                     color: ThemeColors.GRAY_TEXT,
                     fontSize: ThemeSizes.SUBTITLE,
@@ -88,7 +90,9 @@ class _NannyOnboardingEightScreenState
               ),
               const SizedBox(height: 20),
               Text(
-                AppLocalizations.of(context).translate('nanny_ob_eight_native'),
+                AppLocalizations.of(context)
+                        .translate('nanny_ob_eight_native') ??
+                    '',
                 style: TextStyle(
                     color: ThemeColors.DARK_GRAY,
                     fontSize: ThemeSizes.PARAGRAPH),
@@ -109,20 +113,23 @@ class _NannyOnboardingEightScreenState
                     child: Text(value.title),
                   );
                 }).toList(),
-                onChanged: (Language newValue) {
-                  setState(() {
-                    dropdownValue = newValue;
-                    _filteredLanguages = _languages
-                        .where((element) => element != newValue)
-                        .toList();
-                  });
+                onChanged: (Language? newValue) {
+                  if (newValue != null) {
+                    setState(() {
+                      dropdownValue = newValue;
+                      _filteredLanguages = _languages
+                          .where((element) => element != newValue)
+                          .toList();
+                    });
+                  }
                 },
                 value: dropdownValue,
               ),
               const SizedBox(height: 20),
               Text(
                 AppLocalizations.of(context)
-                    .translate('nanny_ob_eight_other_languages'),
+                        .translate('nanny_ob_eight_other_languages') ??
+                    '',
                 style: TextStyle(
                     color: ThemeColors.DARK_GRAY,
                     fontSize: ThemeSizes.PARAGRAPH),
@@ -158,9 +165,9 @@ class _NannyOnboardingEightScreenState
                                 labelKey: 'basic',
                                 isSelected: widget.nanny.otherLanguages == null
                                     ? false
-                                    : widget.nanny.otherLanguages.containsKey(
+                                    : widget.nanny.otherLanguages!.containsKey(
                                             _filteredLanguages[index].id)
-                                        ? widget.nanny.otherLanguages[
+                                        ? widget.nanny.otherLanguages![
                                                     _filteredLanguages[index]
                                                         .id] ==
                                                 'basic'
@@ -179,9 +186,9 @@ class _NannyOnboardingEightScreenState
                                 labelKey: 'intermediate',
                                 isSelected: widget.nanny.otherLanguages == null
                                     ? false
-                                    : widget.nanny.otherLanguages.containsKey(
+                                    : widget.nanny.otherLanguages!.containsKey(
                                             _filteredLanguages[index].id)
-                                        ? widget.nanny.otherLanguages[
+                                        ? widget.nanny.otherLanguages![
                                                     _filteredLanguages[index]
                                                         .id] ==
                                                 'intermediate'
@@ -201,9 +208,9 @@ class _NannyOnboardingEightScreenState
                                 labelKey: 'advanced',
                                 isSelected: widget.nanny.otherLanguages == null
                                     ? false
-                                    : widget.nanny.otherLanguages.containsKey(
+                                    : widget.nanny.otherLanguages!.containsKey(
                                             _filteredLanguages[index].id)
-                                        ? widget.nanny.otherLanguages[
+                                        ? widget.nanny.otherLanguages![
                                                     _filteredLanguages[index]
                                                         .id] ==
                                                 'advanced'

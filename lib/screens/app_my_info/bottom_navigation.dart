@@ -4,9 +4,11 @@ import 'package:my_cv_app/const/theme.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 
 class BottomNavigationNanny extends StatelessWidget {
-  final Function selectPage;
-  final int selectedPageIndex;
   BottomNavigationNanny(this.selectPage, this.selectedPageIndex);
+
+  final Function(int page) selectPage;
+  final int selectedPageIndex;
+
   @override
   Widget build(BuildContext context) {
     return Container(

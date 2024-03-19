@@ -34,7 +34,9 @@ class _NannyOnboardingSevenScreenState
             Container(
               width: double.infinity,
               child: Text(
-                AppLocalizations.of(context).translate('nanny_ob_seven_title'),
+                AppLocalizations.of(context)
+                        .translate('nanny_ob_seven_title') ??
+                    '',
                 style: TextStyle(
                     color: ThemeColors.SECONDARY,
                     fontSize: ThemeSizes.TITLE,
@@ -46,7 +48,8 @@ class _NannyOnboardingSevenScreenState
               width: double.infinity,
               child: Text(
                 AppLocalizations.of(context)
-                    .translate('nanny_ob_seven_subtitle'),
+                        .translate('nanny_ob_seven_subtitle') ??
+                    '',
                 style: TextStyle(
                   color: ThemeColors.GRAY_TEXT,
                   fontSize: ThemeSizes.SUBTITLE,
@@ -57,7 +60,8 @@ class _NannyOnboardingSevenScreenState
             const SizedBox(height: 20),
             Text(
               AppLocalizations.of(context)
-                  .translate('nanny_ob_seven_experience'),
+                      .translate('nanny_ob_seven_experience') ??
+                  '',
               style: TextStyle(
                   color: ThemeColors.DARK_GRAY, fontSize: ThemeSizes.PARAGRAPH),
               textAlign: TextAlign.center,

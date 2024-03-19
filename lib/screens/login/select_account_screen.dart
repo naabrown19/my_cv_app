@@ -13,10 +13,10 @@ import '../../const/theme.dart';
 
 class SelectAccountScreen extends StatefulWidget {
   static const routeName = '/select-account-type';
-  final String email;
-  final String name;
-  final String lastName;
   SelectAccountScreen({this.email, this.lastName, this.name});
+  final String? email;
+  final String? name;
+  final String? lastName;
   @override
   _SelectAccountScreenState createState() => _SelectAccountScreenState();
 }
@@ -26,7 +26,7 @@ class _SelectAccountScreenState extends State<SelectAccountScreen> {
   bool _isFront = false;
   bool _isBack = false;
   bool _isLoading = false;
-  String _lang;
+  String? _lang;
 
   @override
   void initState() {
@@ -87,7 +87,8 @@ class _SelectAccountScreenState extends State<SelectAccountScreen> {
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
                         AppLocalizations.of(context)
-                            .translate('select_account_type'),
+                                .translate('select_account_type') ??
+                            '',
                         style: TextStyle(
                             color: ThemeColors.DARK_GRAY,
                             fontSize: ThemeSizes.CAPTION),
@@ -166,7 +167,8 @@ class _SelectAccountScreenState extends State<SelectAccountScreen> {
                     _isFull
                         ? Text(
                             AppLocalizations.of(context)
-                                .translate('full_account_type'),
+                                    .translate('full_account_type') ??
+                                '',
                             style: TextStyle(
                                 color: ThemeColors.PRIMARY,
                                 fontWeight: FontWeight.bold,
@@ -176,7 +178,8 @@ class _SelectAccountScreenState extends State<SelectAccountScreen> {
                         : _isFront
                             ? Text(
                                 AppLocalizations.of(context)
-                                    .translate('front_account_type'),
+                                        .translate('front_account_type') ??
+                                    '',
                                 style: TextStyle(
                                     color: ThemeColors.PRIMARY,
                                     fontWeight: FontWeight.bold,

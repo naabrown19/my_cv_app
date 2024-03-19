@@ -5,19 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppLocalizations {
-  final Locale locale;
   AppLocalizations(this.locale);
 
+  final Locale locale;
+
   static AppLocalizations of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate =
       AppLocalizationsDelegate();
 
-  Map<String, String> _localizedStrings;
+  Map<String, String>? _localizedStrings;
 
-  Future<bool> load({String lang}) async {
+  Future<bool> load({String? lang}) async {
     String jsonString;
     if (lang != null) {
       print('${lang.toLowerCase()} we are using it?');
@@ -37,13 +38,13 @@ class AppLocalizations {
     return true;
   }
 
-  String translate(String key) {
-    return _localizedStrings[key];
+  String? translate(String key) {
+    return _localizedStrings?[key];
   }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
-  final Locale overriddenLocale;
+  final Locale? overriddenLocale;
 
   const AppLocalizationsDelegate({this.overriddenLocale});
 
@@ -56,7 +57,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   Future<AppLocalizations> load(Locale locale) async {
     AppLocalizations localizations;
     if (overriddenLocale != null) {
-      localizations = AppLocalizations(overriddenLocale);
+      localizations = AppLocalizations(overriddenLocale!);
     } else {
       localizations = AppLocalizations(locale);
     }

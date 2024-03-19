@@ -34,7 +34,7 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
   // int _monthStep = 0;
   // int _yearStep = 0;
 
-  ScrollController _scrollController;
+  late final ScrollController _scrollController;
 
   @override
   void initState() {
@@ -105,7 +105,7 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
   @override
   void dispose() {
     super.dispose();
-    _focusNodes.forEach((fn) => fn?.dispose());
+    _focusNodes.forEach((fn) => fn.dispose());
     _formKey.currentState?.dispose();
   }
 
@@ -125,7 +125,8 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
                     width: double.infinity,
                     child: Text(
                       AppLocalizations.of(context)
-                          .translate('nanny_ob_four_title'),
+                              .translate('nanny_ob_four_title') ??
+                          '',
                       style: TextStyle(
                           color: ThemeColors.SECONDARY,
                           fontSize: ThemeSizes.TITLE,
@@ -137,7 +138,8 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
                     width: double.infinity,
                     child: Text(
                       AppLocalizations.of(context)
-                          .translate('nanny_ob_four_subtitle'),
+                              .translate('nanny_ob_four_subtitle') ??
+                          '',
                       style: TextStyle(
                         color: ThemeColors.GRAY_TEXT,
                         fontSize: ThemeSizes.SUBTITLE,
@@ -166,7 +168,7 @@ class _NannyOnboardingFourScreenState extends State<NannyOnboardingFourScreen> {
                                   )
                                 : ClipOval(
                                     child: Image.network(
-                                    widget.nanny.profileImageUrl,
+                                    widget.nanny.profileImageUrl!,
                                     fit: BoxFit.cover,
                                     width: 160.0,
                                     height: 160.0,

@@ -22,7 +22,7 @@ class _InitialOnboardingPageViewState extends State<InitialOnboardingPageView> {
   int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
   final int _numPages = 3;
-  String _lang;
+  String? _lang;
 
   @override
   void initState() {

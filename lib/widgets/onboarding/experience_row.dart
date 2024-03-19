@@ -4,13 +4,18 @@ import 'package:my_cv_app/models/my_info.dart';
 import 'package:my_cv_app/services/app_localizations.dart';
 
 class ExperienceRow extends StatefulWidget {
-  final String imagePath;
-  final String textKey;
-  final String nannyKey;
+  final String? imagePath;
+  final String? textKey;
+  final String? nannyKey;
   final MyInfo nanny;
   final int index;
-  ExperienceRow(
-      {this.textKey, this.imagePath, this.nannyKey, this.nanny, this.index});
+  ExperienceRow({
+    this.textKey,
+    this.imagePath,
+    this.nannyKey,
+    required this.nanny,
+    required this.index,
+  });
 
   @override
   _ExperienceRowState createState() => _ExperienceRowState();
@@ -46,12 +51,14 @@ class _ExperienceRowState extends State<ExperienceRow> {
                   size: 70,
                 )
               : Image.asset(
-                  widget.imagePath,
+                  widget.imagePath!,
                   height: 70,
                   width: 70,
                 ),
           Text(
-            AppLocalizations.of(context).translate(widget.textKey),
+            widget.textKey != null
+                ? AppLocalizations.of(context).translate(widget.textKey!) ?? ''
+                : '',
             style: TextStyle(
                 color: ThemeColors.PRIMARY,
                 fontWeight: FontWeight.bold,
@@ -89,7 +96,7 @@ class _ExperienceRowState extends State<ExperienceRow> {
                   ),
                   onChanged: (val) {
                     if (widget.nanny.experiences == null) {
-                      map[widget.nannyKey] = val;
+                      map[widget.nannyKey ?? ''] = val;
                     } else {}
                     print('changed field');
                   },
@@ -97,7 +104,9 @@ class _ExperienceRowState extends State<ExperienceRow> {
               ),
               const SizedBox(width: 5),
               Text(
-                AppLocalizations.of(context).translate('nanny_ob_seven_years'),
+                AppLocalizations.of(context)
+                        .translate('nanny_ob_seven_years') ??
+                    '',
                 style: TextStyle(color: ThemeColors.DARK_GRAY),
               )
             ],

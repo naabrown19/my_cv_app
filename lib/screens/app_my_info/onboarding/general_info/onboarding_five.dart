@@ -19,7 +19,6 @@ class NannyOnboardingFiveScreen extends StatefulWidget {
 }
 
 class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
-  GooglePlace googlePlace;
   List<AutocompletePrediction> predictions = [];
   var sessionToken = 'TEST';
   List<String> webPredictions = [];
@@ -31,9 +30,9 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
   int _phoneStep = 0;
   int _addressStep = 0;
   String addressSearch = '70 Baldwin St, Toron';
-  Address _selectedAddress;
+  Address? _selectedAddress;
 
-  ScrollController _scrollController;
+  late final ScrollController _scrollController;
 
   @override
   void initState() {
@@ -75,23 +74,9 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
     setState(() {
       _addressEdited = true;
     });
-    if (kIsWeb) {
-      // var webResult = await places.autocomplete(value, sessionToken: sessionToken);
-      // if (webResult != null && webResult.predictions != null && mounted) {
-      //   setState(() {
-      //     webPredictions = webResult.predictions;
-      //   });
-      // }
-      if (_addressController.text.length > 7) {
-        webPredictions = ["70 Baldwin St, Toronto, Ontario, Canada, M5T 1L4"];
-      }
-    } else {
-      var result = await googlePlace.autocomplete.get(value);
-      if (result != null && result.predictions != null && mounted) {
-        setState(() {
-          predictions = result.predictions;
-        });
-      }
+
+    if (_addressController.text.length > 7) {
+      webPredictions = ["2181 Madison Ave, Burnaby, British Colombia, Canada"];
     }
   }
 
@@ -108,14 +93,14 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
     print('selected address is web');
     _selectedAddress = Address(
       placeId: 'ChIJCVZhJc8fZUgR1czSYae30bQ',
-      formattedAddress: "70 Baldwin St, Toronto, Canada, M5T 1L4",
-      number: '70',
-      street: 'Baldwin St',
+      formattedAddress: "2181 Madison Ave, Burnaby, British Colombia, Canada",
+      number: '2181',
+      street: 'Madison Ave',
       region: '',
-      city: 'Toronto',
-      county: 'Ontario',
+      city: 'Burnaby',
+      county: 'British Colombia',
       country: 'Canada',
-      postcode: 'M5T 1L4',
+      postcode: '',
     );
 
     // } else {
@@ -167,7 +152,9 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
               Container(
                 width: double.infinity,
                 child: Text(
-                  AppLocalizations.of(context).translate('nanny_ob_five_title'),
+                  AppLocalizations.of(context)
+                          .translate('nanny_ob_five_title') ??
+                      '',
                   style: TextStyle(
                       color: ThemeColors.SECONDARY,
                       fontSize: ThemeSizes.TITLE,
@@ -179,7 +166,8 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
                 width: double.infinity,
                 child: Text(
                   AppLocalizations.of(context)
-                      .translate('nanny_ob_five_subtitle'),
+                          .translate('nanny_ob_five_subtitle') ??
+                      '',
                   style: TextStyle(
                     color: ThemeColors.GRAY_TEXT,
                     fontSize: ThemeSizes.SUBTITLE,
@@ -197,7 +185,6 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
                 child: IntlPhoneField(
                   controller: _phoneController,
                   keyboardType: TextInputType.phone,
-                  autoValidate: true,
                   decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(
                           left: 15, bottom: 11, top: 11, right: 15),
@@ -251,7 +238,7 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
               SizedBox(
                 height: 10,
               ),
-              _addressEdited
+              _addressEdited || _selectedAddress == null
                   ? Container(
                       height: 200,
                       child: ListView.builder(
@@ -265,15 +252,13 @@ class _NannyOnboardingFiveScreenState extends State<NannyOnboardingFiveScreen> {
                                 color: Colors.white,
                               ),
                             ),
-                            title: Text(kIsWeb
-                                ? webPredictions[index]
-                                : predictions[index].description),
+                            title: Text(webPredictions[index]),
                             onTap: () => _selectAddress(index),
                           );
                         },
                       ),
                     )
-                  : SelectedAddressField(_selectedAddress)
+                  : SelectedAddressField(_selectedAddress!)
             ],
           ),
         ),

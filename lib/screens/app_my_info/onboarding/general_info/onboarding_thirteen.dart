@@ -54,7 +54,8 @@ class _NannyOnboardingThirteenScreenState
             const SizedBox(height: 20),
             Text(
               AppLocalizations.of(context)
-                  .translate('nanny_ob_thirteen_subtitle'),
+                      .translate('nanny_ob_thirteen_subtitle') ??
+                  '',
               style: TextStyle(
                 color: ThemeColors.GRAY_TEXT,
                 fontSize: ThemeSizes.SUBTITLE,
