@@ -230,9 +230,20 @@ class ProfileDetails extends StatelessWidget {
                 ],
               ),
               PortfolioWidget(
+                title: 'mmHg Inc',
+                links: [
+                  Link('Sphygmo - Android',
+                      'https://play.google.com/store/apps/details?id=ca.mmhg.sphygmo'),
+                  Link('Sphygmo - iOS',
+                      'https://apps.apple.com/ca/app/sphygmo-bp-glucose/id1457406418'),
+                ],
+              ),
+              PortfolioWidget(
                 title: 'Cufflink.io',
                 links: [
-                  Link('Website', 'https://cufflink.io'),
+                  Link('Pitch', 'https://www.youtube.com/watch?v=M5PfV5rditI'),
+                  Link('Webapp Demo', 'https://youtu.be/wWXezQJVPLc'),
+                  Link('Mobile Demo', 'https://youtu.be/R6FDD2KBEiI'),
                 ],
               ),
               PortfolioWidget(
